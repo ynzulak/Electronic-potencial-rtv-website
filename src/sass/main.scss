@@ -1,0 +1,133 @@
+:root {
+	--main-color: rgb(223, 4, 4);
+	--font-color-white: rgb(255, 255, 255);
+	--separation-color-grey: rgb(220, 220, 220);
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	width: 100%;
+	font-family: 'Roboto', sans-serif;
+	height: 2000px;
+	background-color: var(--font-color-white);
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+//------------------HEADER------------------//
+header {
+	margin: 0 auto;
+	position: sticky;
+	top: 0;
+	z-index: 1;
+
+	.header-sticky {
+		display: flex;
+		align-items: center;
+		height: 120px;
+		width: 100%;
+		background-color: var(--font-color-white);
+	}
+
+	.header-search-with-main {
+		display: flex;
+		margin: 0 auto;
+		padding: 12px 0 9px;
+		height: 69px;
+	}
+
+	.logo {
+		justify-content: center;
+		align-items: center;
+		width: 25%;
+		height: 100%;
+	}
+
+	.search-bar {
+		overflow: hidden;
+		display: flex;
+		margin: 0 50px 0 30px;
+		border: black solid 1px;
+		border-radius: 15px;
+		.input-inner {
+			border: none;
+			outline: none;
+			width: 582px;
+			height: 100%;
+			font-size: 15px;
+			padding: 0 78px 0 15px;
+		}
+		button {
+			background: none;
+			border: none;
+			margin-right: 15px;
+		}
+		i {
+			color: var(--main-color);
+			font-size: 26px;
+		}
+	}
+
+	.user-interactions {
+		display: flex;
+		flex-direction: row-reverse;
+		align-items: center;
+		width: 365px;
+		height: 100%;
+		.shopping-cart {
+			display: flex;
+			flex-direction: row-reverse;
+			i {
+				font-size: 30px;
+				color: var(--main-color);
+			}
+			span {
+				display: flex;
+				align-items: flex-end;
+				margin-left: 10px;
+				font-size: 19px;
+			}
+			.cart-items {
+				position: relative;
+
+				.item-amount {
+					position: absolute;
+					text-align: center;
+					width: 17px;
+					height: 17px;
+					border-radius: 50%;
+					background-color: var(--main-color);
+					color: var(--font-color-white);
+					font-size: 14px;
+					top: -10px;
+					right: -7px;
+				}
+			}
+		}
+	}
+}
+//------------------NAVIGATION------------------//
+nav {
+	.categories {
+		border-bottom: 1px var(--separation-color-grey) solid;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		.categories-container {
+			display: flex;
+			flex-direction: row;
+			.item {
+				padding: 12px 50px;
+				font-size: 18px;
+			}
+		}
+	}
+}
