@@ -1,11 +1,13 @@
 :root {
-	--main-color: rgb(223, 4, 4);
+	--main-color: #d00000;
 	--font-color-white: rgb(255, 255, 255);
 	--separation-color-grey: rgb(220, 220, 220);
+	--items-text-color: #333;
 }
 
 * {
 	box-sizing: border-box;
+	outline: none;
 	margin: 0;
 	padding: 0;
 }
@@ -24,7 +26,6 @@ img {
 
 //------------------HEADER------------------//
 header {
-	margin: 0 auto;
 	position: sticky;
 	top: 0;
 	z-index: 1;
@@ -115,18 +116,113 @@ header {
 	}
 }
 //------------------NAVIGATION------------------//
+
 nav {
 	.categories {
-		border-bottom: 1px var(--separation-color-grey) solid;
 		display: flex;
 		justify-content: space-around;
 		align-items: center;
+		margin-bottom: 12px;
+		border-bottom: 1px var(--separation-color-grey) solid;
 		.categories-container {
 			display: flex;
 			flex-direction: row;
 			.item {
 				padding: 12px 50px;
 				font-size: 18px;
+			}
+		}
+	}
+}
+
+//------------------MAIN------------------//
+.main-content {
+	.content {
+		display: flex;
+		justify-content: center;
+		width: 100%;
+
+		//------------------ASIDE-MENU------------------//
+		.menu {
+			width: 250px;
+			height: 100%;
+			.item {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				font-size: 16px;
+				height: 46px;
+			}
+			.item-title {
+				background-color: var(--main-color);
+				color: var(--font-color-white);
+				font-size: 23px;
+				height: 60px;
+				border-radius: 15px;
+			}
+		}
+		//------------------CONTENT------------------//
+		.products {
+			display: block;
+			margin-left: 50px;
+			width: 1062px;
+			height: 100%;
+			.products-list {
+				display: flex;
+				flex-direction: row;
+				.product {
+					padding: 16px;
+					width: 354px;
+					height: 500px;
+				}
+
+				.price-box {
+					.installment {
+						margin-bottom: 12px;
+						font-size: 18px;
+						color: var(--main-color);
+						text-decoration: underline;
+						font-weight: 700;
+					}
+					.add-to-cart {
+						color: var(--items-text-color);
+						background: var(--main-color);
+					}
+					.full-price {
+						margin: 6px 0 14px;
+						.prices {
+							display: inline-flex;
+							align-items: center;
+							text-align: center;
+							.price-discount {
+								.old-price {
+									text-decoration: line-through;
+									letter-spacing: -0.5px;
+									font-weight: 300;
+									color: var(--items-text-color);
+								}
+							}
+							.price-with-cents-and-currency {
+								display: flex;
+								margin-right: 15px;
+								height: 40px;
+								.price {
+									font-size: 40px;
+									color: var(--main-color);
+								}
+								.cents-with-currency {
+									display: flex;
+									flex-direction: column;
+									align-items: flex-end;
+									justify-content: flex-end;
+									margin-left: 2px;
+									font-size: 16px;
+									color: var(--items-text-color);
+								}
+							}
+						}
+					}
+				}
 			}
 		}
 	}
