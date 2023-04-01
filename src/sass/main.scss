@@ -16,7 +16,7 @@
 body {
 	width: 100%;
 	font-family: 'Roboto', sans-serif;
-	height: 2000px;
+	height: 1500px;
 	background-color: var(--font-color-white);
 }
 
@@ -148,14 +148,6 @@ nav {
 					}
 				}
 			}
-
-			.active {
-				background-color: var(--main-color);
-				border-radius: 15px;
-				span {
-					color: var(--font-color-white);
-				}
-			}
 		}
 	}
 }
@@ -276,6 +268,14 @@ nav {
 	border-radius: 15px;
 	transition: 0.3s;
 	cursor: pointer;
+}
+
+.active {
+	background-color: var(--main-color);
+	border-radius: 15px;
+	span {
+		color: var(--font-color-white);
+	}
 }
 
 .item:hover {
