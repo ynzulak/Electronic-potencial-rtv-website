@@ -187,7 +187,7 @@ nav {
 			height: 100%;
 			.products-list {
 				display: flex;
-				flex-direction: row;
+				flex-wrap: wrap;
 				.product {
 					border-top: solid 1px var(--separation-color-grey);
 					border-left: solid 1px var(--separation-color-grey);
