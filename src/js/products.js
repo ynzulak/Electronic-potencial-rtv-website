@@ -1,4 +1,4 @@
-const products = [
+export const products = [
 	//////////////Phones//////////////
 
 	//////////////iPhone//////////////
@@ -8,7 +8,7 @@ const products = [
 		category: 'smartphone',
 		model: 'iphone',
 		price: 4499.99,
-		image: './img/iphone13.jpg',
+		image: '/src/img/iphone13.jpg',
 		sale: true,
 		saleAmount: 500,
 		installment: 224.92,
@@ -19,7 +19,7 @@ const products = [
 		category: 'smartphone',
 		model: 'iphone',
 		price: 5399.99,
-		image: './img/iphone14.jpg',
+		image: '/src/img/iphone14.jpg',
 		installment: 269.95,
 	},
 	{
@@ -28,7 +28,7 @@ const products = [
 		category: 'smartphone',
 		model: 'iphone',
 		price: 2599.0,
-		image: './img/iphone11.jpg',
+		image: '/src/img/iphone11.jpg',
 		sale: true,
 		saleAmount: 250,
 		installment: 129.95,
@@ -39,7 +39,7 @@ const products = [
 		category: 'smartphone',
 		model: 'iphone',
 		price: 7599.0,
-		image: './img/iphone14-pro.jpg',
+		image: '/src/img/iphone14-pro.jpg',
 		sale: true,
 		saleAmount: 1120,
 		installment: 379.95,
@@ -50,7 +50,7 @@ const products = [
 		category: 'smartphone',
 		model: 'iphone',
 		price: 3999.99,
-		image: './img/iphone13-mini.jpg',
+		image: '/src/img/iphone13-mini.jpg',
 		sale: true,
 		saleAmount: 400,
 		installment: 199.95,
@@ -61,7 +61,7 @@ const products = [
 		category: 'smartphone',
 		model: 'iphone',
 		price: 4199.0,
-		image: './img/iphone12.jpg',
+		image: '/src/img/iphone12.jpg',
 		sale: true,
 		saleAmount: 400,
 		installment: 209.95,
@@ -73,7 +73,7 @@ const products = [
 		category: 'smartphone',
 		model: 'samsung',
 		price: 1599.0,
-		image: './img/iphone12.jpg',
+		image: '/src/img/iphone12.jpg',
 		sale: true,
 		saleAmount: 500,
 		installment: 54.95,
@@ -84,7 +84,7 @@ const products = [
 		category: 'smartphone',
 		model: 'samsung',
 		price: 4799.0,
-		image: './img/galaxys23.jpg',
+		image: '/src/img/galaxys23.jpg',
 		sale: true,
 		saleAmount: 200,
 		installment: 229.95,
@@ -95,7 +95,7 @@ const products = [
 		category: 'smartphone',
 		model: 'samsung',
 		price: 1299.0,
-		image: './img/galaxym23',
+		image: '/src/img/galaxym23',
 		sale: true,
 		saleAmount: 400,
 		installment: 64.95,
@@ -106,7 +106,7 @@ const products = [
 		category: 'smartphone',
 		model: 'samsung',
 		price: 3699.0,
-		image: './img/galaxys22.jpg',
+		image: '/src/img/galaxys22.jpg',
 		sale: true,
 		saleAmount: 600,
 		installment: 184.95,
@@ -117,7 +117,7 @@ const products = [
 		category: 'smartphone',
 		model: 'samsung',
 		price: 2399.0,
-		image: './img/galaxys20.jpg',
+		image: '/src/img/galaxys20.jpg',
 		sale: true,
 		saleAmount: 200,
 		installment: 119.95,
@@ -128,7 +128,7 @@ const products = [
 		category: 'smartphone',
 		model: 'samsung',
 		price: 1899.0,
-		image: './img/galaxya34.jpg',
+		image: '/src/img/galaxya34.jpg',
 		installment: 94.95,
 	},
 	//////////////XIAOMI//////////////
@@ -138,7 +138,7 @@ const products = [
 		category: 'smartphone',
 		model: 'xiaomi',
 		price: 1099.0,
-		image: './img/redminote12.jpg',
+		image: '/src/img/redminote12.jpg',
 		installment: 54.95,
 	},
 	{
@@ -149,7 +149,7 @@ const products = [
 		price: 1299.0,
 		sale: true,
 		saleAmount: 100,
-		image: './img/redminote10pro.jpg',
+		image: '/src/img/redminote10pro.jpg',
 		installment: 64.95,
 	},
 	{
@@ -158,7 +158,7 @@ const products = [
 		category: 'smartphone',
 		model: 'xiaomi',
 		price: 419.0,
-		image: './img/redmia1.jpg',
+		image: '/src/img/redmia1.jpg',
 		installment: 20.95,
 	},
 	{
@@ -167,7 +167,7 @@ const products = [
 		category: 'smartphone',
 		model: 'xiaomi',
 		price: 649.0,
-		image: './img/redmi12c.jpg',
+		image: '/src/img/redmi12c.jpg',
 		sale: true,
 		saleAmount: 100,
 		installment: 32.45,
@@ -180,7 +180,7 @@ const products = [
 		price: 499.0,
 		sale: true,
 		saleAmount: 80,
-		image: './img/redmi9c.jpg',
+		image: '/src/img/redmi9c.jpg',
 		installment: 20.95,
 	},
 	{
@@ -191,7 +191,7 @@ const products = [
 		price: 1249.0,
 		sale: true,
 		saleAmount: 50,
-		image: './img/redminote11s.jpg',
+		image: '/src/img/redminote11s.jpg',
 		installment: 57.95,
 	},
 	//////////////TV//////////////
@@ -205,7 +205,7 @@ const products = [
 		price: 7999,
 		sale: true,
 		saleAmount: 2000,
-		image: './img/samsungqeoled.jpg',
+		image: '/src/img/samsungqeoled.jpg',
 		installment: 299.95,
 	},
 	{
@@ -216,7 +216,7 @@ const products = [
 		price: 5399.0,
 		sale: true,
 		saleAmount: 1500,
-		image: './img/samsungqeqled.jpg',
+		image: '/src/img/samsungqeqled.jpg',
 		installment: 269.95,
 	},
 	{
@@ -227,7 +227,7 @@ const products = [
 		price: 6499.0,
 		sale: true,
 		saleAmount: 1750,
-		image: './img/samsungqe6.jpg',
+		image: '/src/img/samsungqe6.jpg',
 		installment: 324.95,
 	},
 	{
@@ -238,7 +238,7 @@ const products = [
 		price: 9949.0,
 		sale: true,
 		saleAmount: 950,
-		image: './img/samsungqeoled.jpg',
+		image: '/src/img/samsungqeoled.jpg',
 		installment: 496.95,
 	},
 	{
@@ -249,7 +249,7 @@ const products = [
 		price: 2178.99,
 		sale: true,
 		saleAmount: 380,
-		image: './img/samsungqe32.jpg',
+		image: '/src/img/samsungqe32.jpg',
 		installment: 299.95,
 	},
 
@@ -262,7 +262,7 @@ const products = [
 		price: 5699.0,
 		sale: true,
 		saleAmount: 500,
-		image: './img/sonyxroled.jpg',
+		image: '/src/img/sonyxroled.jpg',
 		installment: 284.95,
 	},
 	{
@@ -273,7 +273,7 @@ const products = [
 		price: 6699.0,
 		sale: true,
 		saleAmount: 700,
-		image: './img/sonyxr.jpg',
+		image: '/src/img/sonyxr.jpg',
 		installment: 299.95,
 	},
 	{
@@ -282,7 +282,7 @@ const products = [
 		category: 'TV',
 		model: 'sony',
 		price: 3399.99,
-		image: './img/sonykd.jpg',
+		image: '/src/img/sonykd.jpg',
 		installment: 169.95,
 	},
 
@@ -293,7 +293,7 @@ const products = [
 		category: 'TV',
 		model: 'philips',
 		price: 4499.0,
-		image: './img/philipspus.jpg',
+		image: '/src/img/philipspus.jpg',
 		installment: 224.95,
 	},
 	{
@@ -304,7 +304,7 @@ const products = [
 		price: 5899.0,
 		sale: true,
 		saleAmount: 700,
-		image: './img/philipsoled.jpg',
+		image: '/src/img/philipsoled.jpg',
 		installment: 294.95,
 	},
 	//////////////Laptopy//////////////
@@ -318,7 +318,7 @@ const products = [
 		price: 2199.0,
 		sale: true,
 		saleAmount: 100,
-		image: './img/axerextensa.jpg',
+		image: '/src/img/axerextensa.jpg',
 		installment: 104.95,
 	},
 	{
@@ -327,7 +327,7 @@ const products = [
 		category: 'laptop',
 		model: 'acer',
 		price: 4199.0,
-		image: './img/acernitro.jpg',
+		image: '/src/img/acernitro.jpg',
 		installment: 209.95,
 	},
 	//////////////Asus//////////////
@@ -337,7 +337,7 @@ const products = [
 		category: 'laptop',
 		model: 'asus',
 		price: 3899.0,
-		image: './img/asustuf.jpg',
+		image: '/src/img/asustuf.jpg',
 		installment: 194.95,
 	},
 	//////////////Lenovo//////////////
@@ -347,7 +347,7 @@ const products = [
 		category: 'laptop',
 		model: 'lenovo',
 		price: 3699.0,
-		image: './img/lenovoideapad.jpg',
+		image: '/src/img/lenovoideapad.jpg',
 		installment: 294.95,
 	},
 
@@ -360,7 +360,7 @@ const products = [
 		category: 'game',
 		model: 'xbox one',
 		price: 119.99,
-		image: './img/minecraftxo.jpg',
+		image: '/src/img/minecraftxo.jpg',
 	},
 	{
 		id: 33,
@@ -368,7 +368,7 @@ const products = [
 		category: 'game',
 		model: 'xbox one',
 		price: 179.99,
-		image: './img/rdr2xo.jpg',
+		image: '/src/img/rdr2xo.jpg',
 	},
 	{
 		id: 34,
@@ -376,7 +376,7 @@ const products = [
 		category: 'game',
 		model: 'xbox one',
 		price: 299.0,
-		image: './img/codmw2xo.jpg',
+		image: '/src/img/codmw2xo.jpg',
 	},
 
 	//////////////PS4//////////////
@@ -386,7 +386,7 @@ const products = [
 		category: 'game',
 		model: 'ps4',
 		price: 149.0,
-		image: './img/gtavps4.jpg',
+		image: '/src/img/gtavps4.jpg',
 	},
 	{
 		id: 36,
@@ -394,7 +394,7 @@ const products = [
 		category: 'game',
 		model: 'ps4',
 		price: 79.0,
-		image: './img/gowps4.jpg',
+		image: '/src/img/gowps4.jpg',
 	},
 	{
 		id: 37,
@@ -402,7 +402,7 @@ const products = [
 		category: 'game',
 		model: 'ps4',
 		price: 119.0,
-		image: './img/valhalla.jpg',
+		image: '/src/img/valhalla.jpg',
 	},
 	{
 		id: 38,
@@ -410,7 +410,7 @@ const products = [
 		category: 'game',
 		model: 'ps4',
 		price: 139.0,
-		image: './img/spidermanps4.jpg',
+		image: '/src/img/spidermanps4.jpg',
 	},
 	//////////////Cameras//////////////
 	//////////////gopro///////////////
@@ -420,7 +420,7 @@ const products = [
 		category: 'camera',
 		model: 'gopro',
 		price: 2699.0,
-		image: './img/gopro11.jpg',
+		image: '/src/img/gopro11.jpg',
 		installment: 134.95,
 	},
 	{
@@ -429,7 +429,7 @@ const products = [
 		category: 'camera',
 		model: 'gopro',
 		price: 1949.0,
-		image: './img/gopro9.jpg',
+		image: '/src/img/gopro9.jpg',
 		installment: 97.95,
 	},
 
@@ -443,7 +443,7 @@ const products = [
 		price: 2499.0,
 		sale: true,
 		saleAmount: 100,
-		image: './img/beko.jpg',
+		image: '/src/img/beko.jpg',
 		installment: 119.95,
 	},
 	{
@@ -454,7 +454,8 @@ const products = [
 		price: 3399.0,
 		sale: true,
 		saleAmount: 300,
-		image: './img/samsungagd.jpg',
+		image: '/src/img/samsungagd.jpg',
 		installment: 294.95,
 	},
 ]
+
