@@ -181,7 +181,22 @@ nav {
 					border-top: solid 1px var(--separation-color-grey);
 					border-left: solid 1px var(--separation-color-grey);
 					width: 354px;
+					height: 100%;
 					padding: 16px;
+					.product-img{
+						width: 100%;
+						height: 100%;
+					}
+				}
+				.not-on-sale {
+					.price-discount {
+						visibility: hidden;
+					}
+				}
+				.no-installment {
+					.installment {
+						visibility: hidden;
+					}
 				}
 
 				.product-right-border {
@@ -264,8 +279,8 @@ nav {
 }
 
 .item:hover {
-	border-radius: 15px;
 	background-color: var(--main-color);
+	border-radius: 15px;
 	span {
 		color: var(--font-color-white);
 	}
