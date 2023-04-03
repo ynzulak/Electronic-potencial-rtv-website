@@ -1,5 +1,4 @@
 import { products } from './products.js'
-
 const productsSection = document.querySelector('.products-list')
 
 const renderProducts = function (products) {
@@ -37,10 +36,15 @@ const renderProducts = function (products) {
         </div>
         `
 
-
 		productsSection.appendChild(newProduct)
 	})
 }
 
-document.onload = renderProducts(products)
+const renderCategories = () => {
+let categories = new Set(products.map(item => item.category))
 
+    console.log(categories);
+}
+
+document.onload = renderProducts(products)
+document.onload = renderCategories(products)
