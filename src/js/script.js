@@ -8,7 +8,7 @@ const renderProducts = function (products) {
 		newProduct.className = `product ${products.sale ? '' : 'not-on-sale'}  ${
 			products.installment ? '' : 'no-installment'
 		}`
-		newProduct.innerHTML += `
+		newProduct.innerHTML = `
         <div class="product-header">
             <h2>${products.name}</h2>
         </div>
@@ -37,8 +37,10 @@ const renderProducts = function (products) {
         </div>
         `
 
+
 		productsSection.appendChild(newProduct)
 	})
 }
 
 document.onload = renderProducts(products)
+

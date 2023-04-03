@@ -9,10 +9,11 @@ export const products = [
 		model: 'iphone',
 		price: 4499,
 		cents: 99,
-		image: '/src/img/iphone13.jpg',
+		image: 'https://prod-api.mediamarkt.pl/api/images/gallery_545_400/thumbnails/images/22/22982949/apple-iphone-14-pro-zloty-1.jpg',
 		sale: true,
 		saleAmount: 500,
 		installment: 224.92,
+		recomended: true,
 	},
 	{
 		id: 1,
@@ -21,7 +22,7 @@ export const products = [
 		model: 'iphone',
 		price: 5399,
 		cents: 99,
-		image: '/src/img/iphone14.jpg',
+		image: '../img/iphone14.jpg',
 		installment: 269.95,
 	},
 	{
@@ -80,10 +81,11 @@ export const products = [
 		model: 'samsung',
 		price: 1599,
 		cents: '00',
-		image: '/src/img/iphone12.jpg',
+		image: '/src/img/samsungm33.jpg',
 		sale: true,
 		saleAmount: 500,
 		installment: 54.95,
+		recomended: true,
 	},
 	{
 		id: 7,
@@ -108,6 +110,7 @@ export const products = [
 		sale: true,
 		saleAmount: 400,
 		installment: 64.95,
+		recomended: true,
 	},
 	{
 		id: 9,
@@ -120,6 +123,7 @@ export const products = [
 		sale: true,
 		saleAmount: 600,
 		installment: 184.95,
+		recomended: true,
 	},
 	{
 		id: 10,
@@ -226,6 +230,7 @@ export const products = [
 		saleAmount: 2000,
 		image: '/src/img/samsungqeoled.jpg',
 		installment: 299.95,
+		recomended: true,
 	},
 	{
 		id: 19,
@@ -462,6 +467,7 @@ export const products = [
 		cents: '00',
 		image: '/src/img/gopro11.jpg',
 		installment: 134.95,
+		recomended: true,
 	},
 	{
 		id: 41,
