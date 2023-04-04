@@ -1,5 +1,27 @@
+'use strict'
 import { products } from './products.js'
+let categories = []
 const productsSection = document.querySelector('.products-list')
+const categoryBtn = document.querySelectorAll('.btn')
+const categoryItem = document.querySelectorAll('.cat-item')
+const modelItem = document.querySelectorAll('.model-item')
+
+
+categoryItem.forEach(btn =>
+	btn.addEventListener('click', function () {
+		categoryItem.forEach(item => item.classList.remove('active'))
+		this.classList.add('active')
+	})
+)
+modelItem.forEach(btn =>
+	btn.addEventListener('click', function () {
+		modelItem.forEach(item => item.classList.remove('active'))
+		this.classList.add('active')
+	})
+)
+
+
+
 
 const renderProducts = function (products) {
 	products.forEach(products => {
@@ -41,10 +63,13 @@ const renderProducts = function (products) {
 }
 
 const renderCategories = () => {
-let categories = new Set(products.map(item => item.category))
+	let categories = new Set(products.map(item => item.category))
 
-    console.log(categories);
+	console.log(categories)
+	const categoriesItems = document.querySelector('.categories-container')
+	categories = ['polecamy', ...categories]
+	console.log(categories)
 }
 
-document.onload = renderProducts(products)
-document.onload = renderCategories(products)
+// document.onload = renderProducts(products)
+// document.onload = renderCategories(products)
