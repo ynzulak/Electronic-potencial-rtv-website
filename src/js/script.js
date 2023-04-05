@@ -5,10 +5,18 @@ const productsSection = document.querySelector('.products-list')
 const categoryBtn = document.querySelectorAll('.btn')
 const categoryItem = document.querySelectorAll('.cat-item')
 const modelItem = document.querySelectorAll('.model-item')
-
+const categoriesItems = document.querySelector('.categories-container')
 
 categoryItem.forEach(btn =>
-	btn.addEventListener('click', function () {
+	btn.addEventListener('click', function (e) {
+		const category = e.target.dataset.category
+		const selectedCategoryProducts = products.filter(item => {
+			if (item.category === category) {
+				return item
+			}
+		})
+console.log(selectedCategoryProducts);
+
 		categoryItem.forEach(item => item.classList.remove('active'))
 		this.classList.add('active')
 	})
@@ -19,9 +27,6 @@ modelItem.forEach(btn =>
 		this.classList.add('active')
 	})
 )
-
-
-
 
 const renderProducts = function (products) {
 	products.forEach(products => {
@@ -66,7 +71,6 @@ const renderCategories = () => {
 	let categories = new Set(products.map(item => item.category))
 
 	console.log(categories)
-	const categoriesItems = document.querySelector('.categories-container')
 	categories = ['polecamy', ...categories]
 	console.log(categories)
 }
