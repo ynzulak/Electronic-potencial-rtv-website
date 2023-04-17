@@ -9,7 +9,7 @@ export const products = [
 		model: 'iphone',
 		price: 4499,
 		cents: 99,
-		image: '/src/img/iphone13.jpg',
+		image: "img/iphone13.jpg",
 		sale: true,
 		saleAmount: 500,
 		installment: 224.92,

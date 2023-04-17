@@ -7,6 +7,7 @@ const categoryItem = document.querySelectorAll('.cat-item')
 const modelItem = document.querySelectorAll('.model-item')
 const categoriesItems = document.querySelector('.categories-container')
 
+
 categoryItem.forEach(btn =>
 	btn.addEventListener('click', function (e) {
 		const category = e.target.dataset.category
@@ -27,6 +28,8 @@ modelItem.forEach(btn =>
 		this.classList.add('active')
 	})
 )
+
+
 
 const renderProducts = function (products) {
 	products.forEach(products => {
@@ -75,5 +78,5 @@ const renderCategories = () => {
 	console.log(categories)
 }
 
-// document.onload = renderProducts(products)
+document.onload = renderProducts(products)
 // document.onload = renderCategories(products)
