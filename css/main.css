@@ -1,20 +1,21 @@
 :root {
-  --main-color: rgb(223, 4, 4);
+  --main-color: rgb(40, 109, 165);
   --font-color-white: rgb(255, 255, 255);
   --separation-color-grey: rgb(220, 220, 220);
+  --items-text-color: #333;
 }
 
 * {
   box-sizing: border-box;
+  outline: none;
   margin: 0;
   padding: 0;
 }
 
 body {
-  width: 100%;
-  font-family: "Roboto", sans-serif;
-  height: 2000px;
+  height: 1400px;
   background-color: var(--font-color-white);
+  font-family: "Roboto", sans-serif;
 }
 
 img {
@@ -22,17 +23,20 @@ img {
   max-height: 100%;
 }
 
+button {
+  cursor: pointer;
+}
+
 header {
   position: -webkit-sticky;
   position: sticky;
-  top: 0;
   z-index: 1;
+  top: 0;
 }
 header .header-sticky {
   display: flex;
   align-items: center;
   height: 120px;
-  width: 100%;
   background-color: var(--font-color-white);
 }
 header .header-search-with-main {
@@ -42,14 +46,11 @@ header .header-search-with-main {
   height: 69px;
 }
 header .logo {
-  justify-content: center;
-  align-items: center;
-  width: 25%;
-  height: 100%;
+  margin-right: 30px;
 }
 header .search-bar {
-  overflow: hidden;
   display: flex;
+  overflow: hidden;
   margin: 0 50px 0 30px;
   border: black solid 1px;
   border-radius: 15px;
@@ -59,17 +60,17 @@ header .search-bar .input-inner {
   outline: none;
   width: 582px;
   height: 100%;
-  font-size: 15px;
   padding: 0 78px 0 15px;
+  font-size: 15px;
 }
 header .search-bar button {
-  background: none;
   border: none;
   margin-right: 15px;
+  background: none;
 }
 header .search-bar i {
-  color: var(--main-color);
   font-size: 26px;
+  color: var(--main-color);
 }
 header .user-interactions {
   display: flex;
@@ -81,6 +82,7 @@ header .user-interactions {
 header .user-interactions .shopping-cart {
   display: flex;
   flex-direction: row-reverse;
+  cursor: pointer;
 }
 header .user-interactions .shopping-cart i {
   font-size: 30px;
@@ -97,15 +99,15 @@ header .user-interactions .shopping-cart .cart-items {
 }
 header .user-interactions .shopping-cart .cart-items .item-amount {
   position: absolute;
-  text-align: center;
-  width: 17px;
-  height: 17px;
-  border-radius: 50%;
-  background-color: var(--main-color);
-  color: var(--font-color-white);
-  font-size: 14px;
   top: -10px;
   right: -7px;
+  text-align: center;
+  border-radius: 50%;
+  width: 17px;
+  height: 17px;
+  background-color: var(--main-color);
+  font-size: 14px;
+  color: var(--font-color-white);
 }
 
 nav .categories {
@@ -117,17 +119,24 @@ nav .categories {
 }
 nav .categories .categories-container {
   display: flex;
-  flex-direction: row;
+  padding-bottom: 10px;
 }
-nav .categories .categories-container .item {
+nav .categories .categories-container .item .btn {
+  margin: 0 4px;
   padding: 12px 50px;
+  border: none;
+  height: 100%;
+  width: 100%;
+  background: none;
+}
+nav .categories .categories-container .item .btn span {
+  pointer-events: none;
   font-size: 18px;
 }
 
 .main-content .content {
   display: flex;
   justify-content: center;
-  width: 100%;
 }
 .main-content .content .menu {
   width: 250px;
@@ -137,28 +146,130 @@ nav .categories .categories-container .item {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 16px;
   height: 46px;
+  margin-top: 5px;
+}
+.main-content .content .menu .item .btn {
+  border: none;
+  height: 100%;
+  width: 100%;
+  background: none;
+}
+.main-content .content .menu .item .btn span {
+  font-size: 18px;
 }
 .main-content .content .menu .item-title {
-  background-color: var(--main-color);
-  color: var(--font-color-white);
-  font-size: 23px;
-  height: 60px;
+  margin-bottom: 10px;
   border-radius: 15px;
+  height: 60px;
+  background-color: var(--main-color);
+  font-size: 23px;
+  color: var(--font-color-white);
 }
 .main-content .content .products {
-  display: block;
   margin-left: 50px;
   width: 1062px;
-  height: 100%;
 }
 .main-content .content .products .products-list {
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
 }
 .main-content .content .products .products-list .product {
-  padding: 16px;
+  border-top: solid 1px var(--separation-color-grey);
+  border-left: solid 1px var(--separation-color-grey);
   width: 354px;
-  height: 500px;
+  height: 100%;
+  padding: 16px;
+}
+.main-content .content .products .products-list .product .product-header {
+  height: 87px;
+}
+.main-content .content .products .products-list .product .product-img {
+  width: 100%;
+  height: 100%;
+}
+.main-content .content .products .products-list .not-on-sale .price-discount {
+  visibility: hidden;
+}
+.main-content .content .products .products-list .no-installment .installment {
+  visibility: hidden;
+}
+.main-content .content .products .products-list .product-right-border {
+  border-right: solid 1px var(--separation-color-grey);
+}
+.main-content .content .products .products-list .product-bottom-border {
+  border-bottom: solid 1px var(--separation-color-grey);
+}
+.main-content .content .products .products-list .price-box .installment {
+  margin-bottom: 12px;
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: underline;
+  color: var(--main-color);
+}
+.main-content .content .products .products-list .price-box .add-to-cart .add-to-cart-button {
+  transition: 0.3s;
+  border: none;
+  width: 100%;
+  height: 48px;
+  background: var(--main-color);
+  font-size: 15px;
+  color: var(--font-color-white);
+}
+.main-content .content .products .products-list .price-box .full-price {
+  margin: 6px 0 14px;
+}
+.main-content .content .products .products-list .price-box .full-price .prices {
+  display: inline-flex;
+  align-items: center;
+}
+.main-content .content .products .products-list .price-box .full-price .prices .price-discount .old-price {
+  font-weight: 300;
+  letter-spacing: -0.5px;
+  text-decoration: line-through;
+  color: var(--items-text-color);
+}
+.main-content .content .products .products-list .price-box .full-price .prices .price-with-cents-and-currency {
+  display: flex;
+  margin-right: 15px;
+  height: 40px;
+}
+.main-content .content .products .products-list .price-box .full-price .prices .price-with-cents-and-currency .price {
+  font-size: 40px;
+  color: var(--main-color);
+}
+.main-content .content .products .products-list .price-box .full-price .prices .price-with-cents-and-currency .cents-with-currency {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  margin-left: 2px;
+  font-size: 16px;
+  color: var(--items-text-color);
+}
+
+.item {
+  transition: 0.2s;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.active {
+  border-radius: 15px;
+  background-color: var(--main-color);
+}
+.active span {
+  color: var(--font-color-white);
+}
+
+.item:hover {
+  background-color: var(--main-color);
+  border-radius: 15px;
+}
+.item:hover span {
+  color: var(--font-color-white);
+}
+
+.add-to-cart-button:hover {
+  box-shadow: 0 0 7px #666;
 }/*# sourceMappingURL=main.css.map */

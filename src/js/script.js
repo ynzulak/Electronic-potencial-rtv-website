@@ -1,5 +1,6 @@
 'use strict'
 import { products } from './products.js'
+
 let categories = []
 const productsSection = document.querySelector('.products-list')
 const categoryBtn = document.querySelectorAll('.btn')
@@ -7,16 +8,14 @@ const categoryItem = document.querySelectorAll('.cat-item')
 const modelItem = document.querySelectorAll('.model-item')
 const categoriesItems = document.querySelector('.categories-container')
 
-
 categoryItem.forEach(btn =>
 	btn.addEventListener('click', function (e) {
 		const category = e.target.dataset.category
+		const recomended = e.target.dataset.recomended
 		const selectedCategoryProducts = products.filter(item => {
-			if (item.category === category) {
-				return item
-			}
+			if (item.category === category) return item
 		})
-console.log(selectedCategoryProducts);
+		console.log(selectedCategoryProducts)
 
 		categoryItem.forEach(item => item.classList.remove('active'))
 		this.classList.add('active')
@@ -29,8 +28,6 @@ modelItem.forEach(btn =>
 	})
 )
 
-
-
 const renderProducts = function (products) {
 	products.forEach(products => {
 		const newProduct = document.createElement('div')
@@ -41,7 +38,7 @@ const renderProducts = function (products) {
         <div class="product-header">
             <h2>${products.name}</h2>
         </div>
-        <div class="product-img"><img src="${products.image}" alt=""></div>
+        <div class="product-img"><img src="${products.image}"></div>
         <div class="price-box">
             <div class="full-price">
                 <div class="prices">
