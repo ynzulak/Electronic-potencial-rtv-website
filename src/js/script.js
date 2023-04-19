@@ -8,7 +8,7 @@ const categoryItem = document.querySelectorAll('.cat-item')
 const modelItem = document.querySelectorAll('.model-item')
 const categoriesItems = document.querySelector('.categories-container')
 const recomendedBtn = document.querySelector('.recomended-btn')
-const searchBarInput = document.querySelector(".input-inner")
+const searchBarInput = document.querySelector('.input-inner')
 
 const renderProducts = function (products) {
 	productsSection.innerHTML = ''
@@ -50,7 +50,6 @@ const renderProducts = function (products) {
 	})
 }
 
-
 categoryItem.forEach((btn, index) => {
 	if (index !== 0) {
 		btn.addEventListener('click', function (e) {
@@ -86,3 +85,11 @@ modelItem.forEach(btn =>
 
 document.onload = renderProducts(recomendedProducts)
 
+searchBarInput.addEventListener('input', e => {
+	const search = e.target.value
+
+	const foundProducts = products.filter(product => {
+		if (product.name.toLowerCase().includes(search.toLowerCase())) return product
+	})
+	renderProducts(foundProducts)
+})
