@@ -168,18 +168,18 @@ nav .categories .categories-container .item .btn span {
 }
 .main-content .content .products {
   margin-left: 50px;
-  width: 1062px;
+  width: 1092px;
 }
 .main-content .content .products .products-list {
   display: flex;
   flex-wrap: wrap;
 }
 .main-content .content .products .products-list .product {
-  border-top: solid 1px var(--separation-color-grey);
-  border-left: solid 1px var(--separation-color-grey);
+  border: solid 1px var(--separation-color-grey);
   width: 354px;
   height: 100%;
   padding: 16px;
+  margin: 5px;
 }
 .main-content .content .products .products-list .product .product-header {
   height: 87px;

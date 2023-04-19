@@ -8,6 +8,7 @@ const categoryItem = document.querySelectorAll('.cat-item')
 const modelItem = document.querySelectorAll('.model-item')
 const categoriesItems = document.querySelector('.categories-container')
 const recomendedBtn = document.querySelector('.recomended-btn')
+const searchBarInput = document.querySelector(".input-inner")
 
 const renderProducts = function (products) {
 	productsSection.innerHTML = ''
@@ -49,6 +50,7 @@ const renderProducts = function (products) {
 	})
 }
 
+
 categoryItem.forEach((btn, index) => {
 	if (index !== 0) {
 		btn.addEventListener('click', function (e) {
@@ -57,7 +59,6 @@ categoryItem.forEach((btn, index) => {
 				if (item.category === category) return item
 			})
 			renderProducts(selectedCategoryProducts)
-			console.log(selectedCategoryProducts)
 
 			categoryItem.forEach(item => item.classList.remove('active'))
 			this.classList.add('active')
@@ -65,17 +66,16 @@ categoryItem.forEach((btn, index) => {
 	}
 })
 
-
 const recomendedProducts = products.filter(item => {
-    if (item.recomended === true) return item
+	if (item.recomended === true) return item
 })
 
 recomendedBtn.addEventListener('click', function (e) {
+	categoryItem.forEach(item => item.classList.remove('active'))
+	this.classList.add('active')
+
 	renderProducts(recomendedProducts)
 })
-
-
-
 
 modelItem.forEach(btn =>
 	btn.addEventListener('click', function () {
@@ -84,5 +84,5 @@ modelItem.forEach(btn =>
 	})
 )
 
-// document.onload = renderCategories(products)
 document.onload = renderProducts(recomendedProducts)
+

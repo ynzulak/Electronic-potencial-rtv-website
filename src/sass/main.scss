@@ -183,16 +183,16 @@ nav {
 		//------------------CONTENT------------------//
 		.products {
 			margin-left: 50px;
-			width: 1062px;
+			width: 1092px;
 			.products-list {
 				display: flex;
 				flex-wrap: wrap;
 				.product {
-					border-top: solid 1px var(--separation-color-grey);
-					border-left: solid 1px var(--separation-color-grey);
+					border: solid 1px var(--separation-color-grey);
 					width: 354px;
 					height: 100%;
 					padding: 16px;
+					margin: 5px;
 					.product-header {
 						height: 87px;
 					}
