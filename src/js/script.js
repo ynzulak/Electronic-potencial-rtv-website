@@ -89,16 +89,18 @@ searchBarInput.addEventListener('input', e => {
 	const search = e.target.value
 	const foundProducts = products.filter(product => {
 		if (product.name.toLowerCase().includes(search.toLowerCase())) return product
+		renderProducts(recomendedProducts)
 	})
 
 	foundProducts.length === 0
 		? emptyState.classList.add('active-empty-state')
 		: emptyState.classList.remove('active-empty-state')
 
-	if (search.value === '') renderProducts(recomendedProducts)
-
-	// searchBtn.addEventListener('click', (e) => renderProducts(foundProducts))
-	renderProducts(foundProducts)
+		// searchBtn.addEventListener('click', (e) => renderProducts(foundProducts))
+		renderProducts(foundProducts)
+		if (search === '') {
+			renderProducts(recomendedProducts)
+		}
 })
 
 document.onload = renderProducts(recomendedProducts)

@@ -247,9 +247,6 @@ nav .categories .categories-container .item .btn span {
   font-size: 16px;
   color: var(--items-text-color);
 }
-.main-content .content .products .products-list .empty-state {
-  display: none;
-}
 
 .item {
   transition: 0.4s;
@@ -275,6 +272,10 @@ nav .categories .categories-container .item .btn span {
 
 .add-to-cart-button:hover {
   box-shadow: 0 0 7px #666;
+}
+
+.empty-state {
+  display: none;
 }
 
 .active-empty-state {
