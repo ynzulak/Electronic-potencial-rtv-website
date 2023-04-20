@@ -9,6 +9,8 @@ const modelItem = document.querySelectorAll('.model-item')
 const categoriesItems = document.querySelector('.categories-container')
 const recomendedBtn = document.querySelector('.recomended-btn')
 const searchBarInput = document.querySelector('.input-inner')
+const searchBtn = document.querySelector('.search-btn')
+const emptyState = document.querySelector('.empty-state')
 
 const renderProducts = function (products) {
 	productsSection.innerHTML = ''
@@ -83,13 +85,20 @@ modelItem.forEach(btn =>
 	})
 )
 
-document.onload = renderProducts(recomendedProducts)
-
 searchBarInput.addEventListener('input', e => {
 	const search = e.target.value
-
 	const foundProducts = products.filter(product => {
 		if (product.name.toLowerCase().includes(search.toLowerCase())) return product
 	})
+
+	foundProducts.length === 0
+		? emptyState.classList.add('active-empty-state')
+		: emptyState.classList.remove('active-empty-state')
+
+	if (search.value === '') renderProducts(recomendedProducts)
+
+	// searchBtn.addEventListener('click', (e) => renderProducts(foundProducts))
 	renderProducts(foundProducts)
 })
+
+document.onload = renderProducts(recomendedProducts)

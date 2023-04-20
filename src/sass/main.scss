@@ -273,6 +273,10 @@ nav {
 						}
 					}
 				}
+
+				.empty-state {
+					display: none;
+				}
 			}
 		}
 	}
@@ -301,4 +305,12 @@ nav {
 
 .add-to-cart-button:hover {
 	box-shadow: 0 0 7px #666;
+}
+
+.active-empty-state {
+	display: block;
+	width: 100%;
+	font-size: 25px;
+	text-align: center;
+	margin-top: 50px;
 }
