@@ -1,7 +1,6 @@
 'use strict'
 import { products } from './products.js'
 
-let categories = []
 const productsSection = document.querySelector('.products-list')
 const categoryBtn = document.querySelectorAll('.btn')
 const categoryItem = document.querySelectorAll('.cat-item')
@@ -11,6 +10,7 @@ const recomendedBtn = document.querySelector('.recomended-btn')
 const searchBarInput = document.querySelector('.input-inner')
 const searchBtn = document.querySelector('.search-btn')
 const emptyState = document.querySelector('.empty-state')
+const modelsList = document.querySelector('.list')
 
 const renderProducts = function (products) {
 	productsSection.innerHTML = ''
@@ -52,6 +52,22 @@ const renderProducts = function (products) {
 	})
 }
 
+
+const renderModels = function (products) {
+	const uniqueModels =[...new Set(products.forEach(item => item.model))]
+	modelsList.innerHTML = ''
+	products.forEach(products => {
+		const newModel = document.createElement('div')
+		newModel.className = `item model-item`
+		newModel.innerHTML = `
+		<button class="btn"><span>${products.model}</span></button>
+		`
+console.log(uniqueModels);
+	modelsList.appendChild(newModel)
+	})
+}
+
+
 categoryItem.forEach((btn, index) => {
 	if (index !== 0) {
 		btn.addEventListener('click', function (e) {
@@ -60,6 +76,7 @@ categoryItem.forEach((btn, index) => {
 				if (item.category === category) return item
 			})
 			renderProducts(selectedCategoryProducts)
+			renderModels(selectedCategoryProducts)
 
 			categoryItem.forEach(item => item.classList.remove('active'))
 			this.classList.add('active')
@@ -74,7 +91,7 @@ const recomendedProducts = products.filter(item => {
 recomendedBtn.addEventListener('click', function (e) {
 	categoryItem.forEach(item => item.classList.remove('active'))
 	this.classList.add('active')
-
+	
 	renderProducts(recomendedProducts)
 })
 
@@ -83,24 +100,26 @@ modelItem.forEach(btn =>
 		modelItem.forEach(item => item.classList.remove('active'))
 		this.classList.add('active')
 	})
-)
-
-searchBarInput.addEventListener('input', e => {
-	const search = e.target.value
-	const foundProducts = products.filter(product => {
-		if (product.name.toLowerCase().includes(search.toLowerCase())) return product
-		renderProducts(recomendedProducts)
-	})
-
-	foundProducts.length === 0
+	)
+	
+	searchBarInput.addEventListener('input', e => {
+		const search = e.target.value
+		const foundProducts = products.filter(product => {
+			if (product.name.toLowerCase().includes(search.toLowerCase())) return product
+			renderProducts(recomendedProducts)
+		})
+		
+		foundProducts.length === 0
 		? emptyState.classList.add('active-empty-state')
 		: emptyState.classList.remove('active-empty-state')
-
+		
 		// searchBtn.addEventListener('click', (e) => renderProducts(foundProducts))
 		renderProducts(foundProducts)
 		if (search === '') {
 			renderProducts(recomendedProducts)
 		}
-})
-
-document.onload = renderProducts(recomendedProducts)
+	})
+	
+	document.onload = renderProducts(recomendedProducts)
+	
+	// renderModels(products)
