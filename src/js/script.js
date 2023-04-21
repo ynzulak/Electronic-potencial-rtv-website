@@ -59,8 +59,7 @@ const renderModels = function (products) {
 		newModel.innerHTML = `
 		<button class="btn"><span>${products}</span></button>
 		`
-		
-		console.log(uniqueModels);
+
 		modelsList.appendChild(newModel)
 	})
 }
@@ -93,7 +92,7 @@ recomendedBtn.addEventListener('click', function (e) {
 })
 
 modelItem.forEach(btn =>
-	btn.addEventListener('click', function () {
+	btn.addEventListener('click', function (e) {
 		modelItem.forEach(item => item.classList.remove('active'))
 		this.classList.add('active')
 	})
