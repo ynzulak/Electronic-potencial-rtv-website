@@ -1,6 +1,5 @@
 'use strict'
 import { products } from './products.js'
-
 const productsSection = document.querySelector('.products-list')
 const categoryBtn = document.querySelectorAll('.btn')
 const categoryItem = document.querySelectorAll('.cat-item')
@@ -51,22 +50,20 @@ const renderProducts = function (products) {
 		productsSection.appendChild(newProduct)
 	})
 }
-
-
 const renderModels = function (products) {
-	const uniqueModels =[...new Set(products.forEach(item => item.model))]
+	let uniqueModels = [...new Set(products.map(item => item.model))]
 	modelsList.innerHTML = ''
-	products.forEach(products => {
+	uniqueModels.forEach(products => {
 		const newModel = document.createElement('div')
 		newModel.className = `item model-item`
 		newModel.innerHTML = `
-		<button class="btn"><span>${products.model}</span></button>
+		<button class="btn"><span>${products}</span></button>
 		`
-console.log(uniqueModels);
-	modelsList.appendChild(newModel)
+		
+		console.log(uniqueModels);
+		modelsList.appendChild(newModel)
 	})
 }
-
 
 categoryItem.forEach((btn, index) => {
 	if (index !== 0) {
@@ -91,7 +88,7 @@ const recomendedProducts = products.filter(item => {
 recomendedBtn.addEventListener('click', function (e) {
 	categoryItem.forEach(item => item.classList.remove('active'))
 	this.classList.add('active')
-	
+
 	renderProducts(recomendedProducts)
 })
 
@@ -100,26 +97,27 @@ modelItem.forEach(btn =>
 		modelItem.forEach(item => item.classList.remove('active'))
 		this.classList.add('active')
 	})
-	)
-	
-	searchBarInput.addEventListener('input', e => {
-		const search = e.target.value
-		const foundProducts = products.filter(product => {
-			if (product.name.toLowerCase().includes(search.toLowerCase())) return product
-			renderProducts(recomendedProducts)
-		})
-		
-		foundProducts.length === 0
+)
+
+searchBarInput.addEventListener('input', e => {
+	const search = e.target.value
+	const foundProducts = products.filter(product => {
+		if (product.name.toLowerCase().includes(search.toLowerCase())) return product
+		categoryItem.forEach(item => item.classList.remove('active'))
+		renderProducts(recomendedProducts)
+	})
+
+	foundProducts.length === 0
 		? emptyState.classList.add('active-empty-state')
 		: emptyState.classList.remove('active-empty-state')
-		
-		// searchBtn.addEventListener('click', (e) => renderProducts(foundProducts))
-		renderProducts(foundProducts)
-		if (search === '') {
-			renderProducts(recomendedProducts)
-		}
-	})
-	
-	document.onload = renderProducts(recomendedProducts)
-	
-	// renderModels(products)
+
+	// searchBtn.addEventListener('click', (e) => renderProducts(foundProducts))
+	renderProducts(foundProducts)
+	if (search === '') {
+		renderProducts(recomendedProducts)
+	}
+})
+
+document.onload = renderProducts(recomendedProducts)
+
+// renderModels(products)
