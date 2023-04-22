@@ -55,18 +55,20 @@ const renderProducts = function (products) {
 const renderModels = function (products) {
 	let uniqueModels = [...new Set(products.map(item => item.model))]
 	modelsList.innerHTML = ''
-	uniqueModels.map(products => {
+	uniqueModels.forEach(products => {
 		const newModel = document.createElement('div')
 		newModel.className = `item model-item`
 		newModel.innerHTML = `
 		<button class="btn"><span>${products}</span></button>
 		`
 
-	newModel.addEventListener('click', function (e) {
-		newModel.map(item => item.classList.remove('active'))
-		this.classList.add('active')
-	})
-
+		
+		newModel.addEventListener('click', e => {
+			const model = e.target.dataset.model
+			const selectedCategoryProducts = products.filter(item => {
+				if (item.category === category) return item
+			})
+		})
 		modelsList.appendChild(newModel)
 	})
 }
@@ -102,6 +104,7 @@ recomendedBtn.addEventListener('click', function (e) {
 	this.classList.add('active')
 
 	renderProducts(recomendedProducts)
+	renderModels(recomendedProducts)
 })
 
 searchBarInput.addEventListener('input', e => {
@@ -124,5 +127,4 @@ searchBarInput.addEventListener('input', e => {
 })
 
 document.onload = renderProducts(recomendedProducts)
-
-// renderModels(products)
+document.onload = renderModels(recomendedProducts)
