@@ -5,11 +5,11 @@ const categoryBtn = document.querySelectorAll('.btn')
 const categoryItem = document.querySelectorAll('.cat-item')
 const modelItem = document.querySelectorAll('.model-item')
 const categoriesItems = document.querySelector('.categories-container')
+const modelsList = document.querySelector('.list')
 const recomendedBtn = document.querySelector('.recomended-btn')
 const searchBarInput = document.querySelector('.input-inner')
 const searchBtn = document.querySelector('.search-btn')
 const emptyState = document.querySelector('.empty-state')
-const modelsList = document.querySelector('.list')
 
 const renderProducts = function (products) {
 	productsSection.innerHTML = ''
@@ -50,20 +50,33 @@ const renderProducts = function (products) {
 		productsSection.appendChild(newProduct)
 	})
 }
+
+// REMEMBER TO FIX THAT
 const renderModels = function (products) {
 	let uniqueModels = [...new Set(products.map(item => item.model))]
 	modelsList.innerHTML = ''
-	uniqueModels.forEach(products => {
+	uniqueModels.map(products => {
 		const newModel = document.createElement('div')
 		newModel.className = `item model-item`
 		newModel.innerHTML = `
 		<button class="btn"><span>${products}</span></button>
 		`
 
+	newModel.addEventListener('click', function (e) {
+		newModel.map(item => item.classList.remove('active'))
+		this.classList.add('active')
+	})
+
 		modelsList.appendChild(newModel)
 	})
 }
 
+modelItem.forEach(btn =>
+	btn.addEventListener('click', function (e) {
+		modelItem.forEach(item => item.classList.remove('active'))
+		this.classList.add('active')
+	})
+)
 categoryItem.forEach((btn, index) => {
 	if (index !== 0) {
 		btn.addEventListener('click', function (e) {
@@ -90,13 +103,6 @@ recomendedBtn.addEventListener('click', function (e) {
 
 	renderProducts(recomendedProducts)
 })
-
-modelItem.forEach(btn =>
-	btn.addEventListener('click', function (e) {
-		modelItem.forEach(item => item.classList.remove('active'))
-		this.classList.add('active')
-	})
-)
 
 searchBarInput.addEventListener('input', e => {
 	const search = e.target.value
