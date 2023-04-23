@@ -167,6 +167,7 @@ nav {
 					width: 100%;
 					background: none;
 					span {
+						pointer-events: none;
 						font-size: 18px;
 					}
 				}
@@ -302,8 +303,6 @@ nav {
 .add-to-cart-button:hover {
 	box-shadow: 0 0 7px #666;
 }
-
-
 
 .empty-state {
 	display: none;

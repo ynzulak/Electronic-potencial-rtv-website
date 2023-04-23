@@ -46,44 +46,47 @@ const renderProducts = function (products) {
 		KOSZYKA</span></button></div>
 		</div>
 		`
-		const cartBtn = document.querySelectorAll('.add-to-cart-button')
-
 		productsSection.appendChild(newProduct)
-		// cartBtn.forEach(btn =>
-		// 	btn.addEventListener('click', e => {
-		// 		this
-		// 	}))
 	})
+	const cartBtn = document.querySelectorAll('.add-to-cart-button')
+	cartBtn.forEach(btn =>
+		btn.addEventListener('click', e => {
+			console.log(e)
+		})
+	)
 }
 
 // REMEMBER TO FIX THAT
 const renderModels = function (products) {
 	let uniqueModels = [...new Set(products.map(item => item.model))]
+	uniqueModels = ['Wszystkie', ...uniqueModels]
 	modelsList.innerHTML = ''
-	uniqueModels.forEach(products => {
+	uniqueModels.forEach(models => {
 		const newModel = document.createElement('div')
 		newModel.className = `item model-item`
 		newModel.innerHTML = `
-		<button class="btn"><span>${products}</span></button>
+		<button class="btn" data-category="${models}"><span style="pointer-events:none">${models}</span></button>
 		`
-		
 		modelsList.appendChild(newModel)
 	})
 	const modelItem = document.querySelectorAll('.model-item')
-	modelItem.forEach(btn =>
+	modelItem.forEach((btn, index) => {
+		if (index == 0) btn.classList.add('active')
+
 		btn.addEventListener('click', function (e) {
+			const model = e.target.dataset.category
+			const selectedModelProducts = products.filter(item => {
+				if (item.model === model) return item
+			})
+
+			renderProducts(selectedModelProducts)
+
 			modelItem.forEach(item => item.classList.remove('active'))
 			this.classList.add('active')
 		})
-	)
+	})
 }
 
-modelItem.forEach(btn =>
-	btn.addEventListener('click', function (e) {
-		modelItem.forEach(item => item.classList.remove('active'))
-		this.classList.add('active')
-	})
-)
 categoryItem.forEach((btn, index) => {
 	if (index !== 0) {
 		btn.addEventListener('click', function (e) {
@@ -128,6 +131,7 @@ searchBarInput.addEventListener('input', e => {
 	renderProducts(foundProducts)
 	if (search === '') {
 		renderProducts(recomendedProducts)
+		recomendedBtn.classList.add('active')
 	}
 })
 
