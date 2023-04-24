@@ -11,6 +11,7 @@ const searchBarInput = document.querySelector('.input-inner')
 const searchBtn = document.querySelector('.search-btn')
 const emptyState = document.querySelector('.empty-state')
 
+// Rendering products
 const renderProducts = function (products) {
 	productsSection.innerHTML = ''
 	products.forEach(products => {
@@ -56,7 +57,7 @@ const renderProducts = function (products) {
 	)
 }
 
-// REMEMBER TO FIX THAT
+// Rendering model items with event
 const renderModels = function (products) {
 	let uniqueModels = [...new Set(products.map(item => item.model))]
 	uniqueModels = ['Wszystkie', ...uniqueModels]
@@ -76,14 +77,15 @@ const renderModels = function (products) {
 		}
 		btn.addEventListener('click', function (e) {
 			const model = e.target.dataset.category
-			let productsArr = products;
+			let productsArr = products
 			if (model === 'Wszystkie') {
-				productsArr = products;
+				productsArr = products
 			} else {
-			productsArr = productsArr.filter(item => {
-				if (item.model === model) return item
-			})}
-			
+				productsArr = productsArr.filter(item => {
+					if (item.model === model) return item
+				})
+			}
+
 			renderProducts(productsArr)
 
 			modelItem.forEach(item => item.classList.remove('active'))
@@ -92,6 +94,7 @@ const renderModels = function (products) {
 	})
 }
 
+// Category items buttons
 categoryItem.forEach((btn, index) => {
 	if (index !== 0) {
 		btn.addEventListener('click', function (e) {
@@ -108,6 +111,7 @@ categoryItem.forEach((btn, index) => {
 	}
 })
 
+// Recomended products
 const recomendedProducts = products.filter(item => {
 	if (item.recomended === true) return item
 })
@@ -120,6 +124,7 @@ recomendedBtn.addEventListener('click', function (e) {
 	renderModels(recomendedProducts)
 })
 
+// Search Bar
 searchBarInput.addEventListener('input', e => {
 	const search = e.target.value
 	const foundProducts = products.filter(product => {
@@ -132,7 +137,6 @@ searchBarInput.addEventListener('input', e => {
 		? emptyState.classList.add('active-empty-state')
 		: emptyState.classList.remove('active-empty-state')
 
-	// searchBtn.addEventListener('click', (e) => renderProducts(foundProducts))
 	renderProducts(foundProducts)
 	if (search === '') {
 		renderProducts(recomendedProducts)
