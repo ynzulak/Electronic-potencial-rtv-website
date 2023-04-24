@@ -71,15 +71,20 @@ const renderModels = function (products) {
 	})
 	const modelItem = document.querySelectorAll('.model-item')
 	modelItem.forEach((btn, index) => {
-		if (index == 0) btn.classList.add('active')
-
+		if (index == 0) {
+			btn.classList.add('active')
+		}
 		btn.addEventListener('click', function (e) {
 			const model = e.target.dataset.category
-			const selectedModelProducts = products.filter(item => {
+			let productsArr = products;
+			if (model === 'Wszystkie') {
+				productsArr = products;
+			} else {
+			productsArr = productsArr.filter(item => {
 				if (item.model === model) return item
-			})
-
-			renderProducts(selectedModelProducts)
+			})}
+			
+			renderProducts(productsArr)
 
 			modelItem.forEach(item => item.classList.remove('active'))
 			this.classList.add('active')
