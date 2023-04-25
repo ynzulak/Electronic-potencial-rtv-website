@@ -49,12 +49,16 @@ const renderProducts = function (products) {
 		`
 		productsSection.appendChild(newProduct)
 	})
-	const cartBtn = document.querySelectorAll('.add-to-cart-button')
-	cartBtn.forEach(btn =>
+	
+	const addToBasket = document.querySelectorAll('.add-to-cart-button')
+	addToBasket.forEach(btn => {
 		btn.addEventListener('click', e => {
-			console.log(e)
+			const itemAmount = document.querySelector('.item-amount')
+			let itemAmountNumber = parseInt(itemAmount.innerHTML)
+			itemAmountNumber += 1
+			itemAmount.innerHTML = itemAmountNumber
 		})
-	)
+	})
 }
 
 // Rendering model items with event
@@ -144,5 +148,5 @@ searchBarInput.addEventListener('input', e => {
 	}
 })
 
-document.onload = renderProducts(recomendedProducts)
+// document.onload = renderProducts(recomendedProducts)
 document.onload = renderModels(recomendedProducts)

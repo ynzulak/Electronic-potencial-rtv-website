@@ -156,6 +156,7 @@ nav .categories .categories-container .item .btn span {
   background: none;
 }
 .main-content .content .menu .item .btn span {
+  pointer-events: none;
   font-size: 18px;
 }
 .main-content .content .menu .item-title {
@@ -246,6 +247,12 @@ nav .categories .categories-container .item .btn span {
   margin-left: 2px;
   font-size: 16px;
   color: var(--items-text-color);
+}
+
+.products-in-basket {
+  background-color: red;
+  width: 100px;
+  height: 100px;
 }
 
 .item {
