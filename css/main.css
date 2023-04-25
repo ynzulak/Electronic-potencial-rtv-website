@@ -250,9 +250,44 @@ nav .categories .categories-container .item .btn span {
 }
 
 .products-in-basket {
-  background-color: red;
-  width: 100px;
-  height: 100px;
+  display: block;
+  border: 2px solid black;
+  width: 300px;
+  height: 200px;
+  padding-top: 50px;
+}
+.products-in-basket .product-basket {
+  padding: 5px;
+  display: flex;
+  width: 100%;
+}
+.products-in-basket .product-basket .product-img {
+  position: relative;
+  margin-right: 25px;
+}
+.products-in-basket .product-basket .product-img .product-amount {
+  position: absolute;
+  top: -10px;
+  left: 28px;
+  text-align: center;
+  border-radius: 50%;
+  width: 17px;
+  height: 17px;
+  background-color: var(--main-color);
+  font-size: 14px;
+  color: var(--font-color-white);
+}
+.products-in-basket .product-basket .product-img .product-pic {
+  width: 35px;
+  height: 35px;
+}
+.products-in-basket .product-basket .product-name {
+  word-wrap: break-word;
+  width: 150px;
+  font-size: 12px;
+}
+.products-in-basket .product-basket .product-price {
+  margin-left: auto;
 }
 
 .item {
