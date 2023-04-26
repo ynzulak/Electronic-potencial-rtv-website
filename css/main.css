@@ -333,6 +333,10 @@ nav .categories .categories-container .item .btn span {
   color: var(--items-text-color);
 }
 
+.hidden {
+  display: none;
+}
+
 .item {
   transition: 0.4s;
   border-radius: 15px;

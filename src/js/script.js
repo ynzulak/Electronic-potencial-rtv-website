@@ -10,6 +10,21 @@ const recomendedBtn = document.querySelector('.recomended-btn')
 const searchBarInput = document.querySelector('.input-inner')
 const searchBtn = document.querySelector('.search-btn')
 const emptyState = document.querySelector('.empty-state')
+const shoppingCart = document.querySelector('.shopping-cart')
+const basketList = document.querySelector('.products-list-basket')
+const basketContainer = document.querySelector('.basket-container')
+
+const piwo = function () {
+	shoppingCart.addEventListener('mouseenter', e => {
+		basketList.classList.remove('hidden')
+	})
+
+	basketContainer.addEventListener('mouseleave', e => {
+		basketList.classList.add('hidden')
+	})
+}
+
+piwo()
 
 // Rendering products
 const renderProducts = function (products) {
@@ -49,7 +64,7 @@ const renderProducts = function (products) {
 		`
 		productsSection.appendChild(newProduct)
 	})
-	
+
 	const addToBasket = document.querySelectorAll('.add-to-cart-button')
 	addToBasket.forEach(btn => {
 		btn.addEventListener('click', e => {
