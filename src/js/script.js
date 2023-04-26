@@ -148,5 +148,5 @@ searchBarInput.addEventListener('input', e => {
 	}
 })
 
-// document.onload = renderProducts(recomendedProducts)
+document.onload = renderProducts(recomendedProducts)
 document.onload = renderModels(recomendedProducts)
