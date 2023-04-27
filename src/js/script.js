@@ -1,5 +1,8 @@
 'use strict'
 import { products } from './products.js'
+
+let addToBasketEvent = false
+
 const productsSection = document.querySelector('.products-list')
 const categoryBtn = document.querySelectorAll('.btn')
 const categoryItem = document.querySelectorAll('.cat-item')
@@ -88,6 +91,7 @@ const addToBasket = e => {
             </div>
 		`
 	basketContainer.appendChild(basketProduct)
+	addToBasketEvent = true
 }
 
 // Rendering model items with event
@@ -177,16 +181,21 @@ searchBarInput.addEventListener('input', e => {
 	}
 })
 const basketHover = function () {
-	if (basketContainer.innerHTML = '') {
-		shoppingCart.addEventListener('mouseenter', e => {
+	shoppingCart.addEventListener('mouseenter', e => {
+		if (addToBasketEvent) {
+			basketList.classList.add('basket-animation')
 			basketList.classList.remove('hidden')
-		})
+		}
+	})
 
-		basketContainer.addEventListener('mouseleave', e => {
+	basketContainer.addEventListener('mouseleave', e => {
+		if (addToBasketEvent) {
 			basketList.classList.add('hidden')
-		})
-	}
+			basketList.classList.remove('basket-animation')
+		}
+	})
 }
+
 basketHover()
 
 document.onload = renderProducts(recomendedProducts)
