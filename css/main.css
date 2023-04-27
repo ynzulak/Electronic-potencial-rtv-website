@@ -301,6 +301,9 @@ nav .categories .categories-container .item .btn span {
   font-size: 15px;
   color: var(--font-color-white);
 }
+.main-content .content .products .products-list .price-box .add-to-cart .add-to-cart-button span {
+  pointer-events: none;
+}
 .main-content .content .products .products-list .price-box .full-price {
   margin: 6px 0 14px;
 }

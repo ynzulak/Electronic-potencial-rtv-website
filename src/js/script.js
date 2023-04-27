@@ -12,19 +12,12 @@ const searchBtn = document.querySelector('.search-btn')
 const emptyState = document.querySelector('.empty-state')
 const shoppingCart = document.querySelector('.shopping-cart')
 const basketList = document.querySelector('.products-list-basket')
+const basket = document.querySelector('.products-in-basket')
 const basketContainer = document.querySelector('.basket-container')
 
-const piwo = function () {
-	shoppingCart.addEventListener('mouseenter', e => {
-		basketList.classList.remove('hidden')
-	})
+// const renderBasket = function(products) {
 
-	basketContainer.addEventListener('mouseleave', e => {
-		basketList.classList.add('hidden')
-	})
-}
-
-piwo()
+// }
 
 // Rendering products
 const renderProducts = function (products) {
@@ -58,22 +51,43 @@ const renderProducts = function (products) {
 		</div>
 		</div>
 		<div class="installment"><span>${products.installment} zł x 20 rat 0%</span></div>
-		<div class="add-to-cart"><button class="add-to-cart-button"><span>DO
+		<div class="add-to-cart"><button data-id="${products.id}" class="add-to-cart-button"><span>DO
 		KOSZYKA</span></button></div>
 		</div>
 		`
 		productsSection.appendChild(newProduct)
 	})
 
-	const addToBasket = document.querySelectorAll('.add-to-cart-button')
-	addToBasket.forEach(btn => {
-		btn.addEventListener('click', e => {
-			const itemAmount = document.querySelector('.item-amount')
-			let itemAmountNumber = parseInt(itemAmount.innerHTML)
-			itemAmountNumber += 1
-			itemAmount.innerHTML = itemAmountNumber
-		})
-	})
+	const addToBasketButton = document.querySelectorAll('.add-to-cart-button')
+	addToBasketButton.forEach(btn => btn.addEventListener('click', addToBasket))
+}
+const addToBasket = e => {
+	const itemAmount = document.querySelector('.item-amount')
+	let itemAmountNumber = parseInt(itemAmount.innerHTML)
+	itemAmountNumber += 1
+	itemAmount.innerHTML = itemAmountNumber
+	const selectedId = parseInt(e.target.dataset.id)
+	const key = products.findIndex(product => product.id === selectedId)
+	const shortenedName = products.at(key).name.slice(0, 28) + '...'
+	console.log(shortenedName)
+	console.log(products.at(key))
+	console.log(products.at(selectedId))
+
+	const basketProduct = document.createElement('div')
+	basketProduct.className = `basket-product`
+	basketProduct.innerHTML = `
+             <div class="product-img">
+                <div class="product-amount">1</div>
+                 <img class="product-pic" src="${products.at(selectedId).image}" alt="">
+            </div>
+            <div class="product-name">
+                <p>${shortenedName}</p>
+             </div>
+             <div class="product-price">
+                <p>${products.at(key).price + '.' + products.at(key).cents}zł</p><i class="fa-solid fa-xmark"></i>
+            </div>
+		`
+	basketContainer.appendChild(basketProduct)
 }
 
 // Rendering model items with event
@@ -162,6 +176,18 @@ searchBarInput.addEventListener('input', e => {
 		recomendedBtn.classList.add('active')
 	}
 })
+const basketHover = function () {
+	if (basketContainer.innerHTML = '') {
+		shoppingCart.addEventListener('mouseenter', e => {
+			basketList.classList.remove('hidden')
+		})
+
+		basketContainer.addEventListener('mouseleave', e => {
+			basketList.classList.add('hidden')
+		})
+	}
+}
+basketHover()
 
 document.onload = renderProducts(recomendedProducts)
 document.onload = renderModels(recomendedProducts)

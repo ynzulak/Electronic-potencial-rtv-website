@@ -322,6 +322,9 @@ nav {
 							background: var(--main-color);
 							font-size: 15px;
 							color: var(--font-color-white);
+							span {
+								pointer-events: none;
+							}
 						}
 					}
 					.full-price {
