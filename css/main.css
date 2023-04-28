@@ -168,14 +168,14 @@ header .user-interactions .products-list-basket .basket-container .basket-produc
   margin-left: 10px;
   color: var(--main-color);
 }
-header .user-interactions .products-list-basket .basket-container .price-box {
+header .user-interactions .products-list-basket .basket-container .price-basket {
   display: flex;
   align-items: center;
   margin: 20px 0;
   height: 25px;
   padding: 0 10px;
 }
-header .user-interactions .products-list-basket .basket-container .price-box .products-price {
+header .user-interactions .products-list-basket .basket-container .price-basket .products-price {
   margin-left: auto;
   margin-right: 21px;
   font-weight: bold;

@@ -2,6 +2,8 @@
 import { products } from './products.js'
 
 let addToBasketEvent = false
+let basketPrice = []
+let basketCents = []
 
 const header = document.querySelector('.header-sticky')
 const productsSection = document.querySelector('.products-list')
@@ -16,7 +18,6 @@ const searchBtn = document.querySelector('.search-btn')
 const emptyState = document.querySelector('.empty-state')
 const shoppingCart = document.querySelector('.shopping-cart')
 const basketList = document.querySelector('.products-list-basket')
-const basket = document.querySelector('.products-in-basket')
 const basketContainer = document.querySelector('.basket-container')
 
 // Rendering products
@@ -59,51 +60,49 @@ const renderProducts = function (products) {
 	})
 
 	const addToBasketButton = document.querySelectorAll('.add-to-cart-button')
-	addToBasketButton.forEach(btn => btn.addEventListener('click', addToBasket, shoppingWholePrice))
+	addToBasketButton.forEach(btn => btn.addEventListener('click', addToBasket))
 }
 const addToBasket = e => {
 	const itemAmount = document.querySelector('.item-amount')
 	let itemAmountNumber = parseInt(itemAmount.innerHTML)
 	itemAmountNumber += 1
 	itemAmount.innerHTML = itemAmountNumber
-	const selectedId = parseInt(e.target.dataset.id)
-	const shortenedName = products.at(selectedId).name.slice(0, 28) + '...'
-	console.log(products.at(selectedId))
-	console.log(selectedId)
 
-	const basketProduct = document.createElement('div')
-	basketProduct.className = `basket-product`
-	basketProduct.innerHTML = `
-             <div class="product-img">
-                <div class="product-amount">1</div>
-                 <img class="product-pic" src="${products.at(selectedId).image}" alt="">
-            </div>
-            <div class="product-name">
-                <p>${shortenedName}</p>
-             </div>
-             <div class="product-price">
-                <p>${products.at(selectedId).price + '.' + products.at(selectedId).cents}zł</p>
-				<i class="fa-solid fa-xmark"></i>
-            </div>
-		`
-	basketContainer.appendChild(basketProduct)
+	const selectedId = parseInt(e.target.dataset.id)
+	const key = products.findIndex(product => product.id === selectedId)
+
+	
+	const shortenedName = products.at(selectedId).name.slice(0, 28) + '...'
+	
+	const basketProduct = `
+	<div class="basket-product">
+	<div class="product-img">
+	<div class="product-amount">${itemAmountNumber}</div>
+	<img class="product-pic" src="${products.at(key).image}" alt="">
+	</div>
+	<div class="product-name">
+	<p>${shortenedName}</p>
+	</div>
+	<div class="product-price">
+	<p>${products.at(key).price + '.' + products.at(key).cents} zł</p>
+	<i class="fa-solid fa-xmark"></i>
+	</div>
+	</div>
+	`
+	basketContainer.insertAdjacentHTML('afterbegin', basketProduct)
+	
+	basketPrice.push(products.at(key))
+
+	const totalBasketPrice = basketPrice.reduce((sum, product) => {
+		return (sum += product.price)
+	}, 0)
+
+	console.log(totalBasketPrice)
+
+	const totalBasketAmount = document.querySelector('.total-amount')
+	totalBasketAmount.innerHTML = (totalBasketPrice + '.00 zł') 
 	addToBasketEvent = true
 }
-
-const shoppingWholePrice = function () {
-	const priceBasket = document.createElement('div')
-	priceBasket.className = 'price-box'
-	priceBasket.insertAdjacentHTML = `
-	<div class="total-value">
-          <p>Łączna wartość</p>
-    </div>
-         <div class="products-price">
-              <p>5 000 zł</p>
-      </div>
-	`
-	basketContainer.appendChild(priceBasket)
-}
-
 
 // Rendering model items with event
 const renderModels = function (products) {
