@@ -371,19 +371,36 @@ nav {
 	display: none;
 }
 
-.basket-animation {
+.basket-animation-in {
 	animation: scale-up-tr 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
 
+.basket-animation-out {
+	animation: scale-down-tr 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@keyframes scale-down-tr {
+	0% {
+		transform: scale(1);
+		transform-origin: 100% 0%;
+	}
+	100% {
+		transform: scale(0.5);
+		transform-origin: 100% 0%;
+		opacity: 0;
+	}
+}
 
 @keyframes scale-up-tr {
 	0% {
 		transform: scale(0.5);
 		transform-origin: 100% 0%;
+		opacity: 0;
 	}
 	100% {
 		transform: scale(1);
 		transform-origin: 100% 0%;
+		opacity: 1;
 	}
 }
 

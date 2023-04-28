@@ -3,6 +3,7 @@ import { products } from './products.js'
 
 let addToBasketEvent = false
 
+const header = document.querySelector('.header-sticky')
 const productsSection = document.querySelector('.products-list')
 const categoryBtn = document.querySelectorAll('.btn')
 const categoryItem = document.querySelectorAll('.cat-item')
@@ -17,10 +18,6 @@ const shoppingCart = document.querySelector('.shopping-cart')
 const basketList = document.querySelector('.products-list-basket')
 const basket = document.querySelector('.products-in-basket')
 const basketContainer = document.querySelector('.basket-container')
-
-// const renderBasket = function(products) {
-
-// }
 
 // Rendering products
 const renderProducts = function (products) {
@@ -62,7 +59,7 @@ const renderProducts = function (products) {
 	})
 
 	const addToBasketButton = document.querySelectorAll('.add-to-cart-button')
-	addToBasketButton.forEach(btn => btn.addEventListener('click', addToBasket))
+	addToBasketButton.forEach(btn => btn.addEventListener('click', addToBasket, shoppingWholePrice))
 }
 const addToBasket = e => {
 	const itemAmount = document.querySelector('.item-amount')
@@ -70,11 +67,9 @@ const addToBasket = e => {
 	itemAmountNumber += 1
 	itemAmount.innerHTML = itemAmountNumber
 	const selectedId = parseInt(e.target.dataset.id)
-	const key = products.findIndex(product => product.id === selectedId)
-	const shortenedName = products.at(key).name.slice(0, 28) + '...'
-	console.log(shortenedName)
-	console.log(products.at(key))
+	const shortenedName = products.at(selectedId).name.slice(0, 28) + '...'
 	console.log(products.at(selectedId))
+	console.log(selectedId)
 
 	const basketProduct = document.createElement('div')
 	basketProduct.className = `basket-product`
@@ -87,12 +82,28 @@ const addToBasket = e => {
                 <p>${shortenedName}</p>
              </div>
              <div class="product-price">
-                <p>${products.at(key).price + '.' + products.at(key).cents}zł</p><i class="fa-solid fa-xmark"></i>
+                <p>${products.at(selectedId).price + '.' + products.at(selectedId).cents}zł</p>
+				<i class="fa-solid fa-xmark"></i>
             </div>
 		`
 	basketContainer.appendChild(basketProduct)
 	addToBasketEvent = true
 }
+
+const shoppingWholePrice = function () {
+	const priceBasket = document.createElement('div')
+	priceBasket.className = 'price-box'
+	priceBasket.insertAdjacentHTML = `
+	<div class="total-value">
+          <p>Łączna wartość</p>
+    </div>
+         <div class="products-price">
+              <p>5 000 zł</p>
+      </div>
+	`
+	basketContainer.appendChild(priceBasket)
+}
+
 
 // Rendering model items with event
 const renderModels = function (products) {
@@ -183,15 +194,23 @@ searchBarInput.addEventListener('input', e => {
 const basketHover = function () {
 	shoppingCart.addEventListener('mouseenter', e => {
 		if (addToBasketEvent) {
-			basketList.classList.add('basket-animation')
 			basketList.classList.remove('hidden')
+			basketList.classList.remove('basket-animation-out')
+			basketList.classList.add('basket-animation-in')
 		}
 	})
 
 	basketContainer.addEventListener('mouseleave', e => {
 		if (addToBasketEvent) {
-			basketList.classList.add('hidden')
-			basketList.classList.remove('basket-animation')
+			basketList.classList.remove('basket-animation-in')
+			basketList.classList.add('basket-animation-out')
+		}
+	})
+
+	header.addEventListener('mouseleave', e => {
+		if (addToBasketEvent) {
+			basketList.classList.remove('basket-animation-in')
+			basketList.classList.add('basket-animation-out')
 		}
 	})
 }
