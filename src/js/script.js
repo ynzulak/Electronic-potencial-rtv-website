@@ -71,9 +71,8 @@ const addToBasket = e => {
 	const selectedId = parseInt(e.target.dataset.id)
 	const key = products.findIndex(product => product.id === selectedId)
 
-	
 	const shortenedName = products.at(selectedId).name.slice(0, 28) + '...'
-	
+
 	const basketProduct = `
 	<div class="basket-product">
 	<div class="product-img">
@@ -90,18 +89,27 @@ const addToBasket = e => {
 	</div>
 	`
 	basketContainer.insertAdjacentHTML('afterbegin', basketProduct)
-	
+
 	basketPrice.push(products.at(key))
 
 	const totalBasketPrice = basketPrice.reduce((sum, product) => {
 		return (sum += product.price)
 	}, 0)
 
-	console.log(totalBasketPrice)
 
 	const totalBasketAmount = document.querySelector('.total-amount')
-	totalBasketAmount.innerHTML = (totalBasketPrice + '.00 zł') 
+	totalBasketAmount.innerHTML = totalBasketPrice + '.00 zł'
 	addToBasketEvent = true
+
+	const basketProductDiv = document.querySelector('.basket-product')
+	const xMark = document.querySelectorAll('.fa-xmark')
+	xMark.forEach(btn =>
+		btn.addEventListener('click', e => {
+			basketProductDiv.remove()
+			itemAmountNumber -= 1
+			itemAmount.innerHTML = itemAmountNumber
+		})
+	)
 }
 
 // Rendering model items with event

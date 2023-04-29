@@ -167,6 +167,7 @@ header .user-interactions .products-list-basket .basket-container .basket-produc
 header .user-interactions .products-list-basket .basket-container .basket-product .product-price i {
   margin-left: 10px;
   color: var(--main-color);
+  cursor: pointer;
 }
 header .user-interactions .products-list-basket .basket-container .price-basket {
   display: flex;
