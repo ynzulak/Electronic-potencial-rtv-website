@@ -88,6 +88,7 @@ const addToBasket = e => {
 	</div>
 	</div>
 	`
+	const piwo = 'piwo'
 
 
 
