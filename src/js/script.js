@@ -90,7 +90,7 @@ const addToBasket = e => {
 
 	basketContainer.insertAdjacentHTML('afterbegin', basketProduct)
 
-	basketPrice.push(products.at(key).price)
+	basketPrice.unshift(products.at(key).price)
 	let totalBasketPrice = basketPrice.reduce((sum, product) => {
 		return sum + product
 	}, 0)
@@ -110,21 +110,17 @@ const addToBasket = e => {
 		// 	console.log(totalBasketPrice)
 	}
 	xMark.forEach((btn, index) => {
-		btn.addEventListener(
-			'click',
-			() => {
-				
-				totalBasketPrice -= basketPrice[index]
-				// basketPrice.splice(index, 1)
-				totalBasketAmount.innerHTML = totalBasketPrice
-				console.log(basketPrice)
-				console.log(totalBasketPrice)
-				basketProductDiv[index].remove()
-				itemAmountNumber -= 1
-				itemAmount.innerHTML = itemAmountNumber
-			},
-			handleClick
-		)
+		btn.addEventListener('click', () => {
+			totalBasketPrice -= basketPrice[index]
+			basketPrice.splice(index, 1)
+			totalBasketAmount.innerHTML = totalBasketPrice
+			if (totalBasketPrice === 0) basketPrice = []
+			console.log(basketPrice)
+			console.log(totalBasketPrice)
+			basketProductDiv[index].remove()
+			itemAmountNumber -= 1
+			itemAmount.innerHTML = itemAmountNumber
+		})
 	})
 }
 
