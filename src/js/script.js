@@ -3,7 +3,6 @@ import { products } from './products.js'
 
 let addToBasketEvent = false
 let basketPrice = []
-let basketCents = []
 
 const header = document.querySelector('.header-sticky')
 const productsSection = document.querySelector('.products-list')
@@ -73,6 +72,7 @@ const addToBasket = e => {
 
 	const shortenedName = products.at(selectedId).name.slice(0, 28) + '...'
 
+
 	const basketProduct = `
 	<div class="basket-product">
 	<div class="product-img">
@@ -88,6 +88,9 @@ const addToBasket = e => {
 	</div>
 	</div>
 	`
+
+
+
 	basketContainer.insertAdjacentHTML('afterbegin', basketProduct)
 
 	basketPrice.push(products.at(key))
@@ -96,20 +99,19 @@ const addToBasket = e => {
 		return (sum += product.price)
 	}, 0)
 
-
 	const totalBasketAmount = document.querySelector('.total-amount')
 	totalBasketAmount.innerHTML = totalBasketPrice + '.00 zł'
 	addToBasketEvent = true
 
 	const basketProductDiv = document.querySelector('.basket-product')
-	const xMark = document.querySelectorAll('.fa-xmark')
-	xMark.forEach(btn =>
-		btn.addEventListener('click', e => {
-			basketProductDiv.remove()
-			itemAmountNumber -= 1
-			itemAmount.innerHTML = itemAmountNumber
-		})
-	)
+	const xMark = document.querySelector('.fa-xmark')
+	function handleClick(event) {
+		const xMark = event.target
+		basketProductDiv.remove()
+		xMark.removeEventListener('click', handleClick)
+		itemAmount.innerHTML = itemAmountNumber - 1
+	}
+	xMark.addEventListener('click', handleClick)
 }
 
 // Rendering model items with event
