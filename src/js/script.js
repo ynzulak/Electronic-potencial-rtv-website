@@ -89,9 +89,9 @@ const addToBasket = e => {
 	`
 
 	basketContainer.insertAdjacentHTML('afterbegin', basketProduct)
-
+	let totalBasketPrice = 0
 	basketPrice.unshift(products.at(key).price)
-	let totalBasketPrice = basketPrice.reduce((sum, product) => {
+	totalBasketPrice = basketPrice.reduce((sum, product) => {
 		return sum + product
 	}, 0)
 
@@ -102,26 +102,57 @@ const addToBasket = e => {
 	totalBasketAmount.innerHTML = totalBasketPrice + '.00 zł'
 	addToBasketEvent = true
 
-	const basketProductDiv = document.querySelectorAll('.basket-product')
+	const basketProductDiv = document.querySelector('.basket-product')
 	const xMark = document.querySelectorAll('.fa-xmark')
 	function handleClick(event) {
 		const xMark = event.target
+		for (let i = 0; i < xMark.length; i++) {
+			console.log('piwo')
+		}
 		xMark.removeEventListener('click', handleClick)
-		// 	console.log(totalBasketPrice)
 	}
-	xMark.forEach((btn, index) => {
-		btn.addEventListener('click', () => {
-			totalBasketPrice -= basketPrice[index]
-			basketPrice.splice(index, 1)
-			totalBasketAmount.innerHTML = totalBasketPrice
-			if (totalBasketPrice === 0) basketPrice = []
-			console.log(basketPrice)
-			console.log(totalBasketPrice)
-			basketProductDiv[index].remove()
-			itemAmountNumber -= 1
-			itemAmount.innerHTML = itemAmountNumber
-		})
-	})
+
+	for (let i = 0; i < xMark.length; i++) {
+		xMark[i].addEventListener(
+			'click',
+			e => {
+				totalBasketPrice -= basketPrice[i]
+				basketPrice.splice(i, 1)
+				totalBasketAmount.innerHTML = totalBasketPrice
+				if (totalBasketPrice === 0) basketPrice = []
+				if (basketPrice = []) totalBasketPrice === 0
+				console.log(basketPrice)
+				console.log(totalBasketPrice)
+				basketProductDiv.remove()
+				itemAmountNumber -= 1
+				itemAmount.innerHTML = itemAmountNumber
+			},
+			handleClick
+		)
+	}
+
+	// xMark.forEach((btn, index) => {
+	// 	btn.addEventListener(
+	// 		'click',
+	// 		e => {
+	// 			let indexToRemove = index
+	// 			basketProductDiv[index].remove()
+	// 			totalBasketPrice -= basketPrice[index]
+	// 			removingPrice()
+	// 			// console.log(delete e.basketPrice)
+	// 			// basketPrice.splice(index, 1)
+	// 			// if (index !== -1) basketPrice.splice(index, 1)
+	// 			// if (basketPrice.length === 1) totalBasketPrice = basketPrice[0]
+	// 			// if (totalBasketPrice === 0) basketPrice = []
+	// 			totalBasketAmount.innerHTML = totalBasketPrice
+	// 			console.log(basketPrice)
+	// 			console.log(totalBasketPrice)
+	// 			// itemAmountNumber -= 1
+	// 			// itemAmount.innerHTML = itemAmountNumber
+	// 		},
+	// 		handleClick
+	// 	)
+	// })
 }
 
 // Rendering model items with event
