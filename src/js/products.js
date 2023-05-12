@@ -7,7 +7,7 @@ export const products = [
 		name: 'Smartfon Apple iPhone 13 128GB - 6,1" - 12 Mpix - niebieski',
 		category: 'smartphone',
 		model: 'iPhone',
-		price: 4499,
+		price: 100,
 		cents: '00',
 		image: '/src/img/iphone13.jpg',
 		sale: true,
