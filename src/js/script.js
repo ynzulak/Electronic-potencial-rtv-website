@@ -4,6 +4,7 @@ import { products } from './products.js'
 let addToBasketEvent = false
 let basket = []
 let basketPrice = []
+let events = []
 
 const header = document.querySelector('.header-sticky')
 const productsSection = document.querySelector('.products-list')
@@ -105,46 +106,35 @@ const addToBasket = e => {
 	totalBasketAmount.innerHTML = totalBasketPrice + '.00 zł'
 	addToBasketEvent = true
 
-	// const xMark = document.querySelector('.fa-xmark')
-
-	function handleClick(event) {
-		const xMark = event.target
-		xMark.removeEventListener('click', handleClick)
-	}
-
-	// xMark.addEventListener("click", function(event) {
-	// 	if (event.target.classList.contains("product-button")) {
-	// 	  // Do something when product button is clicked
-	// 	}
-	//   });
-	const basketProductDiv = document.querySelectorAll('.basket-product')
-	basketProductDiv.forEach((btn, index) => {
-		const xMark = document.querySelector('.fa-xmark')
-		xMark.addEventListener(
-			'click',
-			e => {
-				const mark = e.target
-				totalBasketPrice = totalBasketPrice - basketPrice[index] + '.00 zł'
-				basketPrice.splice(index, 1)
-				// e.target.basketPrice.splice(index, 1)
-
-				console.log(basketPrice)
-
-				// basketPrice.splice(s)
-				// basketPrice[index--]
-
-				if (basketPrice.length === 1) totalBasketPrice = basketPrice[0] + '.00 zł'
-				if (basketPrice.length === 0) totalBasketPrice = 0 + '.00 zł'
-				totalBasketAmount.innerHTML = totalBasketPrice
+	const xMark = document.querySelector('.fa-xmark')
+	xMark.addEventListener('click', function (e) {
+		for (let i = basketPrice.length - 1; i >= 0; i--) {
+			if (e) {
+				totalBasketPrice -= basketPrice[i]
+				totalBasketAmount.innerHTML = totalBasketPrice + '.00 zł'
+				basketPrice.splice(i, 1)
 				console.log(totalBasketPrice)
-				itemAmountNumber -= 1
 				itemAmount.innerHTML = itemAmountNumber
-				const basketProductDiv = btn.closest('.basket-product')
+				itemAmountNumber -= 1
+				const basketProductDiv = xMark.closest('.basket-product')
 				basketProductDiv.remove()
-			},
-			handleClick
-		)
+				console.log(basketPrice)
+				break
+			}
+		}
 	})
+	const xMa = document.querySelectorAll('.fa-xmark')
+	// xMa.forEach((btn, index) => {
+	// 	btn.addEventListener(
+	// 		'click',
+	// 		e => {
+	// 			totalBasketPrice -= basketPrice[index]
+	// 			if (basketPrice.length === 1) totalBasketPrice = basketPrice[0]
+	// 			if (basketPrice.length === 0) totalBasketPrice = 0
+	// 			totalBasketAmount.innerHTML = totalBasketPrice  + '.00 zł'
+	// 		}
+	// 	)
+	// })
 }
 
 // Rendering model items with event
