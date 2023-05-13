@@ -4,7 +4,6 @@ import { products } from './products.js'
 let addToBasketEvent = false
 let basket = []
 let basketPrice = []
-let events = []
 
 const header = document.querySelector('.header-sticky')
 const productsSection = document.querySelector('.products-list')
@@ -90,17 +89,15 @@ const addToBasket = e => {
 	`
 
 	basketContainer.insertAdjacentHTML('afterbegin', basketProduct)
-	let totalBasketPrice = 0
+
 	basket.unshift(products.at(key))
 	basketPrice.unshift(products.at(key).price)
 
 	console.log(basketPrice)
 
-	totalBasketPrice = basketPrice.reduce((sum, product) => {
+	let totalBasketPrice = basketPrice.reduce((sum, product) => {
 		return (sum += product)
 	}, 0)
-
-	console.log(totalBasketPrice)
 
 	const totalBasketAmount = document.querySelector('.total-amount')
 	totalBasketAmount.innerHTML = totalBasketPrice + '.00 zł'
@@ -110,31 +107,29 @@ const addToBasket = e => {
 	xMark.addEventListener('click', function (e) {
 		for (let i = basketPrice.length - 1; i >= 0; i--) {
 			if (e) {
-				totalBasketPrice -= basketPrice[i]
-				totalBasketAmount.innerHTML = totalBasketPrice + '.00 zł'
 				basketPrice.splice(i, 1)
+				totalBasketPrice = basketPrice.reduce((sum, product) => {
+					return (sum += product)
+				}, 0)
+				totalBasketAmount.innerHTML = totalBasketPrice + '.00 zł'
 				console.log(totalBasketPrice)
-				itemAmount.innerHTML = itemAmountNumber
 				itemAmountNumber -= 1
+				itemAmount.innerHTML = itemAmountNumber
 				const basketProductDiv = xMark.closest('.basket-product')
 				basketProductDiv.remove()
 				console.log(basketPrice)
+				if (totalBasketPrice === 0) {
+					totalBasketAmount.innerHTML = ``
+					basketList.classList.add('basket-animation-out')
+					setTimeout(() => {
+						basketList.classList.add('hidden')
+						addToBasketEvent = false
+					}, 200)
+				}
 				break
 			}
 		}
 	})
-	const xMa = document.querySelectorAll('.fa-xmark')
-	// xMa.forEach((btn, index) => {
-	// 	btn.addEventListener(
-	// 		'click',
-	// 		e => {
-	// 			totalBasketPrice -= basketPrice[index]
-	// 			if (basketPrice.length === 1) totalBasketPrice = basketPrice[0]
-	// 			if (basketPrice.length === 0) totalBasketPrice = 0
-	// 			totalBasketAmount.innerHTML = totalBasketPrice  + '.00 zł'
-	// 		}
-	// 	)
-	// })
 }
 
 // Rendering model items with event
