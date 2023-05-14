@@ -19,6 +19,7 @@ const emptyState = document.querySelector('.empty-state')
 const shoppingCart = document.querySelector('.shopping-cart')
 const basketList = document.querySelector('.products-list-basket')
 const basketContainer = document.querySelector('.basket-container')
+const logo = document.querySelector('.logo')
 
 // Rendering products
 const renderProducts = function (products) {
@@ -241,6 +242,10 @@ const basketHover = function () {
 		}
 	})
 }
+
+logo.addEventListener('click', () => {
+	location.reload();
+})
 
 basketHover()
 

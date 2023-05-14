@@ -1,6 +1,6 @@
 :root {
   --main-color: rgb(40, 109, 165);
-  --font-color-white: rgba(255, 255, 255, 0.911);
+  --font-color-white: rgba(255, 255, 255);
   --separation-color-grey: rgb(220, 220, 220);
   --items-text-color: #333;
   --font-color-black: rgb(0, 0, 0);
@@ -14,7 +14,8 @@
 }
 
 body {
-  height: 100%;
+  position: relative;
+  min-height: 100vh;
   background-color: var(--font-color-white);
   font-family: "Roboto", sans-serif;
 }
@@ -48,6 +49,7 @@ header .header-search-with-main {
 }
 header .logo {
   margin-right: 30px;
+  cursor: pointer;
 }
 header .search-bar {
   display: flex;
@@ -340,6 +342,8 @@ nav .categories .categories-container .item .btn span {
 }
 
 .footer {
+  position: absolute;
+  bottom: -120px;
   width: 100%;
   text-align: center;
   margin-top: 83px;
