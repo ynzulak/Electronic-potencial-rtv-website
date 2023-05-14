@@ -75,7 +75,7 @@ const addToBasket = e => {
 	const basketProduct = `
 	<div class="basket-product">
 	<div class="product-img">
-	<div class="product-amount">${itemAmountNumber}</div>
+	
 	<img class="product-pic" src="${products.at(key).image}" alt="">
 	</div>
 	<div class="product-name">

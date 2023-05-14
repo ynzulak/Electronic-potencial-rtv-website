@@ -1,8 +1,9 @@
 :root {
   --main-color: rgb(40, 109, 165);
-  --font-color-white: rgb(255, 255, 255);
+  --font-color-white: rgba(255, 255, 255, 0.911);
   --separation-color-grey: rgb(220, 220, 220);
   --items-text-color: #333;
+  --font-color-black: rgb(0, 0, 0);
 }
 
 * {
@@ -13,7 +14,7 @@
 }
 
 body {
-  height: 1400px;
+  height: 100%;
   background-color: var(--font-color-white);
   font-family: "Roboto", sans-serif;
 }
@@ -338,6 +339,35 @@ nav .categories .categories-container .item .btn span {
   color: var(--items-text-color);
 }
 
+.footer {
+  width: 100%;
+  text-align: center;
+  margin-top: 83px;
+  padding: 15px;
+  background-color: var(--main-color);
+  height: 100px;
+}
+.footer .links {
+  display: flex;
+  justify-content: center;
+  padding: 8px;
+}
+.footer .links .link {
+  margin: 0 35px;
+}
+.footer .links .link a {
+  color: var(--font-color-white);
+  text-decoration: none;
+}
+.footer .links .link a:hover {
+  color: var(--font-color-black);
+}
+.footer span {
+  color: var(--font-color-white);
+  font-size: 14px;
+  font-weight: lighter;
+}
+
 .hidden {
   display: none;
 }
@@ -439,4 +469,8 @@ nav .categories .categories-container .item .btn span {
   font-size: 25px;
   text-align: center;
   margin-top: 50px;
+}
+
+.btn {
+  border: 1px solid red;
 }/*# sourceMappingURL=main.css.map */
