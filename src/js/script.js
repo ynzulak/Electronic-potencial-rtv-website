@@ -5,7 +5,11 @@ let addToBasketEvent = false
 let basket = []
 let basketPrice = []
 
-const header = document.querySelector('.header-sticky')
+const headerDiv = document.querySelector('.header-sticky')
+const categoriesDiv = document.querySelector('.categories')
+const contentDiv = document.querySelector('.content')
+const productsDiv = document.querySelector('.products')
+const footerDiv = document.querySelector('.footer')
 const productsSection = document.querySelector('.products-list')
 const categoryBtn = document.querySelectorAll('.btn')
 const categoryItem = document.querySelectorAll('.cat-item')
@@ -20,6 +24,10 @@ const shoppingCart = document.querySelector('.shopping-cart')
 const basketList = document.querySelector('.products-list-basket')
 const basketContainer = document.querySelector('.basket-container')
 const logo = document.querySelector('.logo')
+const checkout = document.querySelector('.checkout-btn')
+const checkoutModal = document.querySelector('.checkout-modal')
+const check = document.querySelector('.check')
+const checkoutClose = document.querySelector('.checkout-close')
 
 // Rendering products
 const renderProducts = function (products) {
@@ -94,8 +102,6 @@ const addToBasket = e => {
 	basket.unshift(products.at(key))
 	basketPrice.unshift(products.at(key).price)
 
-	console.log(basketPrice)
-
 	let totalBasketPrice = basketPrice.reduce((sum, product) => {
 		return (sum += product)
 	}, 0)
@@ -113,7 +119,6 @@ const addToBasket = e => {
 					return (sum += product)
 				}, 0)
 				totalBasketAmount.innerHTML = totalBasketPrice + '.00 zł'
-				console.log(totalBasketPrice)
 				itemAmountNumber -= 1
 				itemAmount.innerHTML = itemAmountNumber
 				const basketProductDiv = xMark.closest('.basket-product')
@@ -235,7 +240,7 @@ const basketHover = function () {
 		}
 	})
 
-	header.addEventListener('mouseleave', e => {
+	headerDiv.addEventListener('mouseleave', e => {
 		if (addToBasketEvent) {
 			basketList.classList.remove('basket-animation-in')
 			basketList.classList.add('basket-animation-out')
@@ -243,11 +248,30 @@ const basketHover = function () {
 	})
 }
 
+const basketCheckout = function () {
+	checkout.addEventListener('click', e => {
+		checkoutModal.classList.remove('hidden')
+		headerDiv.classList.add('blur', 'no-hover')
+		categoriesDiv.classList.add('blur', 'no-hover')
+		contentDiv.classList.add('blur', 'no-hover')
+		productsDiv.classList.add('blur', 'no-hover')
+		footerDiv.classList.add('blur', 'no-hover')
+	})
+
+	check.addEventListener('click', e => {
+		location.reload()
+	})
+
+	checkoutClose.addEventListener('click', e => {
+		location.reload()
+	})
+}
+
 logo.addEventListener('click', () => {
-	location.reload();
+	location.reload()
 })
 
 basketHover()
-
+basketCheckout()
 document.onload = renderProducts(recomendedProducts)
 document.onload = renderModels(recomendedProducts)

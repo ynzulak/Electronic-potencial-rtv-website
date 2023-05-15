@@ -191,7 +191,7 @@ header {
 					display: flex;
 					justify-content: flex-end;
 					padding: 10px;
-					.check {
+					.checkout-btn {
 						transition: 0.4s;
 						border: none;
 						border-radius: 15px;
@@ -404,6 +404,55 @@ nav {
 	}
 }
 
+.checkout-modal {
+	position: fixed;
+	top: 200px;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	width: 600px;
+	border: 1px solid black;
+	border-radius: 15px;
+	background-color: #fff;
+	box-shadow: 0 0 7px #666;
+	.close-modal {
+		display: flex;
+		justify-content: flex-end;
+		padding: 5px 7px;
+		font-size: 25px;
+		.checkout-close {
+			cursor: pointer;
+		}
+	}
+	.modal-text {
+		display: flex;
+		align-items: center;
+		height: 50px;
+		padding-left: 10px;
+	}
+	.modal-button {
+		.checkout {
+			display: flex;
+			justify-content: flex-end;
+			padding: 10px;
+			.check {
+				transition: 0.4s;
+				border: none;
+				border-radius: 15px;
+				font-size: 20px;
+				height: 50px;
+				width: 100px;
+				padding: 5px 10px;
+				background-color: var(--main-color);
+				color: var(--font-color-white);
+			}
+		}
+	}
+}
+.blur {
+	filter: blur(2px);
+}
+
 .hidden {
 	display: none;
 }
@@ -483,4 +532,8 @@ nav {
 }
 .btn {
 	border: 1px solid red;
+}
+
+.no-hover {
+	pointer-events: none;
 }
