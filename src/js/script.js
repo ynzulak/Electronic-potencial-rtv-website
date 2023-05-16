@@ -11,6 +11,7 @@ const contentDiv = document.querySelector('.content')
 const productsDiv = document.querySelector('.products')
 const footerDiv = document.querySelector('.footer')
 const productsSection = document.querySelector('.products-list')
+const searchBar = document.querySelector('.search-bar')
 const categoryBtn = document.querySelectorAll('.btn')
 const categoryItem = document.querySelectorAll('.cat-item')
 const modelItem = document.querySelectorAll('.model-item')
@@ -28,7 +29,7 @@ const checkout = document.querySelector('.checkout-btn')
 const checkoutModal = document.querySelector('.checkout-modal')
 const check = document.querySelector('.check')
 const checkoutClose = document.querySelector('.checkout-close')
-
+const burgerMenuBars = document.querySelector('.fa-bars')
 // Rendering products
 const renderProducts = function (products) {
 	productsSection.innerHTML = ''
@@ -267,11 +268,34 @@ const basketCheckout = function () {
 	})
 }
 
+const searchBarHide = function () {
+	window.addEventListener('scroll', function () {
+		if (window.scrollY > 29) {
+			searchBar.style.opacity = 0
+		} else {
+			searchBar.style.opacity = 1
+		}
+		if (window.scrollY > 35) {
+			headerDiv.style.height = 70 + 'px'
+		} else {
+			headerDiv.style.height = 110 + 'px'
+		}
+	})
+}
+
+const burgerMenuRender = function() {
+	burgerMenuBars.addEventListener('click', e => {
+		console.log('piwo');
+	})
+}
+
 logo.addEventListener('click', () => {
 	location.reload()
 })
 
 basketHover()
 basketCheckout()
+searchBarHide()
+burgerMenuRender()
 document.onload = renderProducts(recomendedProducts)
 document.onload = renderModels(recomendedProducts)

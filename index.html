@@ -19,7 +19,6 @@
     <div class="container">
         <header>
             <div class="header-sticky">
-                <!-- 1 -->
                 <div class="header-search-with-main">
                     <div class="logo">
                         <img src="src/img/logo.png" alt="Logo sklepu Media Market">
@@ -29,7 +28,10 @@
                         <button class="search-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </div>
                     <div class="user-interactions">
-                        <div class="shopping-cart">
+                        <div class="menu interaction">
+                            <div class="burger-menu"><i class="fa-solid fa-bars"></i></div>
+                        </div>
+                        <div class="shopping-cart interaction">
                             <span>Koszyk</span>
                             <div class="cart-items">
                                 <div class="item-amount">0</div><i class="fa-solid fa-basket-shopping"></i>
@@ -71,10 +73,49 @@
                                         </div>
                                     </div>
                                     <div class="checkout">
-                                        <button class="checkout-btn"><i class="fa-solid fa-basket-shopping"></i> Do kasy <i
-                                                class="fa-solid fa-chevron-right"></i></button>
+                                        <button class="checkout-btn"><i class="fa-solid fa-basket-shopping"></i> Do kasy
+                                            <i class="fa-solid fa-chevron-right"></i></button>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="categories burger-menu-categories">
+                            <div class="search-bar-with-x">
+                                <div class="search-bar">
+                                    <input type="text" inputmode="text" placeholder="Czego szukasz?"
+                                        class="input-inner">
+                                    <button class="search-btn" type="submit"><i
+                                            class="fa-solid fa-magnifying-glass"></i></button>
+                                </div>
+                                <div class="burger-close">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </div>
+                            </div>
+
+                            <div class="burger-categories-container">
+                                <div class="item cat-item recomended-btn"><button class="btn"
+                                        data-category="recomended">
+                                        <span>Polecamy!</span>
+                                        <i class="fa-solid fa-chevron-right"></i>
+                                    </button></div>
+                                <div class="item cat-item"><button class="btn"
+                                        data-category="smartphone"><span>Telefony</span><i
+                                            class="fa-solid fa-chevron-right"></i></button></div>
+                                <div class="item cat-item"><button class="btn"
+                                        data-category="TV"><span>Telewizory</span><i
+                                            class="fa-solid fa-chevron-right"></i></button>
+                                </div>
+                                <div class="item cat-item"><button class="btn"
+                                        data-category="laptop"><span>Laptopy</span><i
+                                            class="fa-solid fa-chevron-right"></i></button>
+                                </div>
+                                <div class="item cat-item"><button class="btn" data-category="game"><span>Gry</span><i
+                                            class="fa-solid fa-chevron-right"></i></button></div>
+                                <div class="item cat-item"><button class="btn" data-category="camera"><span>Foto i
+                                            Kamery</span><i class="fa-solid fa-chevron-right"></i></button>
+                                </div>
+                                <div class="item cat-item"><button class="btn" data-category="AGD"><span>AGD</span><i
+                                            class="fa-solid fa-chevron-right"></i></button></div>
                             </div>
                         </div>
                     </div>
@@ -82,8 +123,10 @@
             </div>
         </header>
         <nav>
+            <div class="title">
+                <h2>Która kategoria Cię interesuje?</h2>
+            </div>
             <div class="categories">
-                <!-- 2 -->
                 <div class="categories-container">
                     <div class="item cat-item active recomended-btn"><button class="btn"
                             data-category="recomended"><span>Polecamy!</span></button></div>
@@ -103,26 +146,23 @@
         </nav>
         <main class="main-content">
             <div class="content">
-                <!-- 3 -->
-                <aside>
+                <!-- <aside>
                     <div class="menu">
                         <div class="item item-title"><span>Modele</span></div>
                         <div class="list">
-                            <!-- <div class="item model-item"><button class="btn"><span>iPhone</span></button></div>
+                            <div class="item model-item"><button class="btn"><span>iPhone</span></button></div>
                             <div class="item model-item"><button class="btn"><span>Model 2</span></button></div>
                             <div class="item model-item"><button class="btn"><span>Model 3</span></button></div>
                             <div class="item model-item"><button class="btn"><span>Model 4</span></button></div>
                             <div class="item model-item"><button class="btn"><span>Model 5</span></button></div>
                             <div class="item model-item"><button class="btn"><span>Model 6</span></button></div>
-                            <div class="item model-item"><button class="btn"><span>Model 7</span></button></div> -->
+                            <div class="item model-item"><button class="btn"><span>Model 7</span></button></div>
                         </div>
                     </div>
-                </aside>
+                </aside> -->
                 <section>
                     <div class="products">
-                        <!-- 4 -->
                         <div class="products-list">
-
                             <!-- <div class="product not-on-sale no-installment">
                                 <div class="product-header">
                                     <h2>Smartfon Apple iPhone 13 128GB - 6,1" - 12 Mpix - niebieski</h2>
@@ -154,13 +194,11 @@
                         </div>
                         <p class="empty-state">Nie znaleziono żadnego produktu...</p>
                     </div>
-
                 </section>
             </div>
         </main>
         <footer>
             <div class="footer">
-                <!-- 5 -->
                 <div class="links">
                     <div class="link"><a href="">Portfolio</a>
                     </div>
