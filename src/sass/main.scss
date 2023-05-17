@@ -241,6 +241,7 @@ header {
 	}
 }
 .burger-menu-categories {
+	display: flex;
 	justify-content: start;
 	flex-direction: column;
 	background-color: #fff;
@@ -268,8 +269,12 @@ header {
 		margin-left: 50px;
 	}
 	.burger-categories-container {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
 		width: 100%;
 		padding-bottom: 10px;
+		border-top: 1px var(--separation-color-grey) solid;
 		.item {
 			margin: 10px 5px;
 			border-radius: 0%;
@@ -292,6 +297,15 @@ header {
 					color: var(--main-color);
 				}
 			}
+		}
+		.models-menu {
+			position: absolute;
+			width: 100vw;
+			height: 100vh;
+			top: 80px;
+			
+			background-color: #fff;
+
 		}
 	}
 }

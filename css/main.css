@@ -233,6 +233,7 @@ header .user-interactions .products-list-basket .basket-container .checkout .che
 }
 
 .burger-menu-categories {
+  display: flex;
   justify-content: start;
   flex-direction: column;
   background-color: #fff;
@@ -260,8 +261,12 @@ header .user-interactions .products-list-basket .basket-container .checkout .che
   margin-left: 50px;
 }
 .burger-menu-categories .burger-categories-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   width: 100%;
   padding-bottom: 10px;
+  border-top: 1px var(--separation-color-grey) solid;
 }
 .burger-menu-categories .burger-categories-container .item {
   margin: 10px 5px;
@@ -285,6 +290,13 @@ header .user-interactions .products-list-basket .basket-container .checkout .che
 .burger-menu-categories .burger-categories-container .item .btn .fa-chevron-right {
   font-size: 20px;
   color: var(--main-color);
+}
+.burger-menu-categories .burger-categories-container .models-menu {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 80px;
+  background-color: #fff;
 }
 
 .main-content .content {
