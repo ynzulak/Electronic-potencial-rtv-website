@@ -33,6 +33,8 @@ const checkoutClose = document.querySelector('.checkout-close')
 const burgerMenuBars = document.querySelector('.fa-bars')
 const burgerMenu = document.querySelector('.burger-menu-categories')
 const burgerMenuX = document.querySelector('.burger-close')
+const btnBurgerCategory = document.querySelectorAll('.btn-burger')
+const burgerModelsMenu = document.querySelectorAll('.models-menu')
 
 // Rendering products
 const renderProducts = function (products) {
@@ -294,6 +296,17 @@ const burgerMenuRender = function () {
 
 	burgerMenuX.addEventListener('click', e => {
 		burgerMenu.classList.add('hidden')
+		burgerModelsMenu.forEach(btn => {
+			btn.classList.add('hidden')
+		})
+	})
+
+	btnBurgerCategory.forEach(btn => {
+		btn.addEventListener('click', e => {
+			burgerModelsMenu.forEach(btn => {
+				btn.classList.remove('hidden')
+			})
+		})
 	})
 }
 
