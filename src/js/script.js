@@ -5,6 +5,7 @@ let addToBasketEvent = false
 let basket = []
 let basketPrice = []
 
+const container = document.querySelector('.container')
 const headerDiv = document.querySelector('.header-sticky')
 const categoriesDiv = document.querySelector('.categories')
 const contentDiv = document.querySelector('.content')
@@ -30,6 +31,9 @@ const checkoutModal = document.querySelector('.checkout-modal')
 const check = document.querySelector('.check')
 const checkoutClose = document.querySelector('.checkout-close')
 const burgerMenuBars = document.querySelector('.fa-bars')
+const burgerMenu = document.querySelector('.burger-menu-categories')
+const burgerMenuX = document.querySelector('.burger-close')
+
 // Rendering products
 const renderProducts = function (products) {
 	productsSection.innerHTML = ''
@@ -148,7 +152,7 @@ const renderModels = function (products) {
 		const newModel = document.createElement('div')
 		newModel.className = `item model-item`
 		newModel.innerHTML = `
-		<button class="btn" data-category="${models}"><span style="pointer-events:none">${models}</span></button>
+		<button class="btn" data-category="${models}"><span style="pointer-events:none">${models}</span><i class="fa-solid fa-chevron-right"></i></button>
 		`
 		modelsList.appendChild(newModel)
 	})
@@ -271,9 +275,9 @@ const basketCheckout = function () {
 const searchBarHide = function () {
 	window.addEventListener('scroll', function () {
 		if (window.scrollY > 29) {
-			searchBar.style.opacity = 0
+			searchBar.style.display = 'none'
 		} else {
-			searchBar.style.opacity = 1
+			searchBar.style.display = 'block'
 		}
 		if (window.scrollY > 35) {
 			headerDiv.style.height = 70 + 'px'
@@ -283,9 +287,13 @@ const searchBarHide = function () {
 	})
 }
 
-const burgerMenuRender = function() {
+const burgerMenuRender = function () {
 	burgerMenuBars.addEventListener('click', e => {
-		console.log('piwo');
+		burgerMenu.classList.remove('hidden')
+	})
+
+	burgerMenuX.addEventListener('click', e => {
+		burgerMenu.classList.add('hidden')
 	})
 }
 

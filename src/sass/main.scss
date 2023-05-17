@@ -244,12 +244,12 @@ header {
 	display: flex;
 	justify-content: start;
 	flex-direction: column;
-	background-color: #fff;
 	position: absolute;
 	width: 100vw;
 	height: 100vh;
 	top: -15px;
 	right: -15px;
+	background-color: #fff;
 	.search-bar-with-x {
 		display: flex;
 		margin: 15px 10px;
@@ -303,9 +303,8 @@ header {
 			width: 100vw;
 			height: 100vh;
 			top: 80px;
-			
-			background-color: #fff;
 
+			background-color: #fff;
 		}
 	}
 }
@@ -349,6 +348,7 @@ header {
 		.products {
 			.products-list {
 				display: flex;
+				justify-content: center;
 				flex-wrap: wrap;
 				.product {
 					border: solid 1px var(--separation-color-grey);

@@ -236,12 +236,12 @@ header .user-interactions .products-list-basket .basket-container .checkout .che
   display: flex;
   justify-content: start;
   flex-direction: column;
-  background-color: #fff;
   position: absolute;
   width: 100vw;
   height: 100vh;
   top: -15px;
   right: -15px;
+  background-color: #fff;
 }
 .burger-menu-categories .search-bar-with-x {
   display: flex;
@@ -334,6 +334,7 @@ header .user-interactions .products-list-basket .basket-container .checkout .che
 }
 .main-content .content .products .products-list {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
 }
 .main-content .content .products .products-list .product {
