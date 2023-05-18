@@ -564,6 +564,32 @@ header {
 	}
 }
 
+.burger-slide-left {
+	animation: burger-slide-left 0.3s both;
+}
+
+@keyframes burger-slide-left {
+	0% {
+		transform: translateX(375px);
+	}
+	100% {
+		transform: translateX(0);
+	}
+}
+
+.burger-x-slide-right {
+	animation: burger-x-slide-right 0.3s;
+}
+
+@keyframes burger-x-slide-right {
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(375px);
+	}
+}
+
 .item {
 	transition: 0.4s;
 	border-radius: 15px;

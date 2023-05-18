@@ -159,6 +159,21 @@ const renderModels = function (products) {
 		modelsList.appendChild(newModel)
 	})
 	const modelItem = document.querySelectorAll('.model-item')
+	modelItem.forEach(btn => {
+		btn.addEventListener('click', e => {
+			burgerMenu.classList.add('hidden')
+			burgerModelsMenu.forEach(btn => {
+				btn.classList.add('hidden')
+			})
+			const headerHeight = document.querySelector('.header-sticky').offsetHeight
+			const elementPosition = productsDiv.getBoundingClientRect().top + window.pageYOffset
+			const targetY = elementPosition - headerHeight
+			window.scrollTo({
+				behavior: 'smooth',
+				top: targetY,
+			})
+		})
+	})
 	modelItem.forEach((btn, index) => {
 		if (index == 0) {
 			btn.classList.add('active')
@@ -292,10 +307,16 @@ const searchBarHide = function () {
 const burgerMenuRender = function () {
 	burgerMenuBars.addEventListener('click', e => {
 		burgerMenu.classList.remove('hidden')
+		burgerMenu.classList.remove('burger-x-slide-right')
+		burgerMenu.classList.add('burger-slide-left')
 	})
 
 	burgerMenuX.addEventListener('click', e => {
-		burgerMenu.classList.add('hidden')
+		burgerMenu.classList.remove('burger-slide-left')
+		burgerMenu.classList.add('burger-x-slide-right')
+		setTimeout(() => {
+			burgerMenu.classList.add('hidden')
+		}, 300)
 		burgerModelsMenu.forEach(btn => {
 			btn.classList.add('hidden')
 		})
@@ -304,6 +325,7 @@ const burgerMenuRender = function () {
 	btnBurgerCategory.forEach(btn => {
 		btn.addEventListener('click', e => {
 			burgerModelsMenu.forEach(btn => {
+				btn.classList.add('burger-slide-left')
 				btn.classList.remove('hidden')
 			})
 		})
