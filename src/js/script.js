@@ -34,7 +34,8 @@ const burgerMenuBars = document.querySelector('.fa-bars')
 const burgerMenu = document.querySelector('.burger-menu-categories')
 const burgerMenuX = document.querySelector('.burger-close')
 const btnBurgerCategory = document.querySelectorAll('.btn-burger')
-const burgerModelsMenu = document.querySelectorAll('.models-menu')
+const burgerModelsMenu = document.querySelectorAll('.aside')
+// const burgerModelsMenu = document.querySelectorAll('.models-menu')
 
 // Rendering products
 const renderProducts = function (products) {
@@ -305,7 +306,7 @@ const searchBarHide = function () {
 }
 
 const burgerMenuRender = function () {
-	burgerMenuBars.addEventListener('click', e => {
+	burgerMenuBars.addEventListener('click', e => {		
 		burgerMenu.classList.remove('hidden')
 		burgerMenu.classList.remove('burger-x-slide-right')
 		burgerMenu.classList.add('burger-slide-left')
