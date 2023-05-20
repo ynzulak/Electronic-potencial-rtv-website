@@ -17,6 +17,7 @@ const categoryBtn = document.querySelectorAll('.btn')
 const categoryItem = document.querySelectorAll('.cat-item')
 const modelItem = document.querySelectorAll('.model-item')
 const categoriesItems = document.querySelector('.categories-container')
+const burgerModelsList = document.querySelector('.burger-list')
 const modelsList = document.querySelector('.list')
 const recomendedBtn = document.querySelector('.recomended-btn')
 const searchBarInput = document.querySelector('.input-inner')
@@ -34,8 +35,7 @@ const burgerMenuBars = document.querySelector('.fa-bars')
 const burgerMenu = document.querySelector('.burger-menu-categories')
 const burgerMenuX = document.querySelector('.burger-close')
 const btnBurgerCategory = document.querySelectorAll('.btn-burger')
-const burgerModelsMenu = document.querySelectorAll('.aside')
-// const burgerModelsMenu = document.querySelectorAll('.models-menu')
+const burgerModelsMenu = document.querySelectorAll('.models-menu')
 
 // Rendering products
 const renderProducts = function (products) {
@@ -150,12 +150,21 @@ const addToBasket = e => {
 const renderModels = function (products) {
 	let uniqueModels = [...new Set(products.map(item => item.model))]
 	uniqueModels = ['Wszystkie', ...uniqueModels]
+	burgerModelsList.innerHTML = ''
 	modelsList.innerHTML = ''
+	uniqueModels.forEach(models => {
+		const newModelBurger = document.createElement('div')
+		newModelBurger.className = `item model-item`
+		newModelBurger.innerHTML = `
+		<button class="btn" data-category="${models}"><span style="pointer-events:none">${models}</span><i class="fa-solid fa-chevron-right"></i></button>
+		`
+		burgerModelsList.appendChild(newModelBurger)
+	})
 	uniqueModels.forEach(models => {
 		const newModel = document.createElement('div')
 		newModel.className = `item model-item`
 		newModel.innerHTML = `
-		<button class="btn" data-category="${models}"><span style="pointer-events:none">${models}</span><i class="fa-solid fa-chevron-right"></i></button>
+		<button class="btn" data-category="${models}"><span style="pointer-events:none">${models}</span</button>
 		`
 		modelsList.appendChild(newModel)
 	})
@@ -290,23 +299,29 @@ const basketCheckout = function () {
 	})
 }
 
-const searchBarHide = function () {
-	window.addEventListener('scroll', function () {
-		if (window.scrollY > 29) {
-			searchBar.style.display = 'none'
-		} else {
-			searchBar.style.display = 'block'
-		}
-		if (window.scrollY > 35) {
-			headerDiv.style.height = 70 + 'px'
-		} else {
-			headerDiv.style.height = 110 + 'px'
-		}
-	})
+function mobileSearchBarHide() {
+	const windowWidth = window.innerWidth || document.documentElement.clientWidth
+	const searchBarHide = function () {
+		window.addEventListener('scroll', function () {
+			if (window.scrollY > 29) {
+				searchBar.style.display = 'none'
+			} else {
+				searchBar.style.display = 'block'
+			}
+			if (window.scrollY > 35) {
+				headerDiv.style.height = 70 + 'px'
+			} else {
+				headerDiv.style.height = 120 + 'px'
+			}
+		})
+	}
+	if (windowWidth < 400) {
+		searchBarHide()
+	}
 }
-
+window.addEventListener('resize', mobileSearchBarHide)
 const burgerMenuRender = function () {
-	burgerMenuBars.addEventListener('click', e => {		
+	burgerMenuBars.addEventListener('click', e => {
 		burgerMenu.classList.remove('hidden')
 		burgerMenu.classList.remove('burger-x-slide-right')
 		burgerMenu.classList.add('burger-slide-left')
@@ -339,7 +354,7 @@ logo.addEventListener('click', () => {
 
 basketHover()
 basketCheckout()
-searchBarHide()
+mobileSearchBarHide()
 burgerMenuRender()
 document.onload = renderProducts(recomendedProducts)
 document.onload = renderModels(recomendedProducts)
