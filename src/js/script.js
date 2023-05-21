@@ -32,7 +32,7 @@ const burgerMenu = document.querySelector('.burger-menu-categories')
 const burgerMenuX = document.querySelector('.burger-close')
 const btnBurgerCategory = document.querySelectorAll('.btn-burger')
 const burgerModelsMenu = document.querySelectorAll('.models-menu')
-const userResposiveDiv = document.querySelector('.user-interactions')
+const basketQuit = document.querySelector('.chevron')
 
 // Rendering products
 const renderProducts = function (products) {
@@ -130,6 +130,7 @@ const addToBasket = e => {
 				if (totalBasketPrice === 0) {
 					totalBasketAmount.innerHTML = ``
 					basketList.classList.add('basket-animation-out')
+					basketList.classList.add('burger-x-slide-right')
 					setTimeout(() => {
 						basketList.classList.add('hidden')
 						addToBasketEvent = false
@@ -295,18 +296,20 @@ function mobileEvents() {
 	}
 
 	const mobileBasket = function () {
-		shoppingCart.addEventListener('click', e => {
-			basketContainer.classList.toggle('hidden')
-			if (basketContainer.classList.contains('hidden')) {
-				// basketContainer.classList.remove('burger-x-slide-right')
-				basketContainer.classList.add('burger-slide-left')
-			} else {
+			shoppingCart.addEventListener('click', e => {
+				basketList.classList.remove('hidden')
+				basketList.classList.remove('burger-x-slide-right')
+				basketList.classList.add('burger-slide-left')
+			})
+
+			basketQuit.addEventListener('click', e => {
+				basketList.classList.remove('burger-slide-left')
+				basketList.classList.add('burger-x-slide-right')
 				setTimeout(() => {
-					basketContainer.classList.remove('burger-slide-left')
+					basketList.classList.add('hidden')
 				}, 300)
-				// basketContainer.classList.add('burger-x-slide-right')
-			}
-		})
+			})	
+			
 	}
 	if (windowWidth < 400) {
 		searchBarHide()

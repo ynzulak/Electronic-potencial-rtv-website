@@ -123,9 +123,24 @@ header {
 		}
 		.products-list-basket {
 			transition: cubic-bezier(0.215, 0.61, 0.355, 1);
-			position: absolute;
-			top: 45px;
-			right: -15px;
+			position: fixed;
+			top: 60px;
+			right: 0px;
+			.basket-quit {
+				display: flex;
+				flex-direction: row-reverse;
+				padding: 15px 10px;
+				background-color: #fff;
+				border-top: 1px var(--separation-color-grey) solid;
+				.chevron {
+					width: 25px;
+					height: 25px;
+					i {
+						font-size: 25px;
+						color: var(--main-color);
+					}
+				}
+			}
 			.basket-container {
 				overflow-y: auto;
 				overflow-x: hidden;
@@ -444,6 +459,7 @@ header {
 			}
 		}
 	}
+	
 }
 
 //------------------FOOTER------------------//
@@ -484,12 +500,12 @@ header {
 	top: 200px;
 	left: 0;
 	right: 0;
-	margin: 0 auto;
-	width: 600px;
+	margin: 0 10px;
 	border: 1px solid black;
 	border-radius: 15px;
 	background-color: #fff;
 	box-shadow: 0 0 7px #666;
+	z-index: 1;
 	.close-modal {
 		display: flex;
 		justify-content: flex-end;
@@ -525,45 +541,14 @@ header {
 	}
 }
 
+
+
 .blur {
 	filter: blur(2px);
 }
 
 .hidden {
 	display: none;
-}
-
-.basket-animation-in {
-	animation: scale-up-tr 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-}
-
-.basket-animation-out {
-	animation: scale-down-tr 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-}
-
-@keyframes scale-down-tr {
-	0% {
-		transform: scale(1);
-		transform-origin: 100% 0%;
-	}
-	100% {
-		transform: scale(0.5);
-		transform-origin: 100% 0%;
-		opacity: 0;
-	}
-}
-
-@keyframes scale-up-tr {
-	0% {
-		transform: scale(0.5);
-		transform-origin: 100% 0%;
-		opacity: 0;
-	}
-	100% {
-		transform: scale(1);
-		transform-origin: 100% 0%;
-		opacity: 1;
-	}
 }
 
 .burger-slide-left {
@@ -641,6 +626,38 @@ header {
 }
 
 @media screen and (min-width: 400px) {
+	.basket-animation-in {
+		animation: scale-up-tr 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+	}
+
+	.basket-animation-out {
+		animation: scale-down-tr 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+	}
+
+	@keyframes scale-down-tr {
+		0% {
+			transform: scale(1);
+			transform-origin: 100% 0%;
+		}
+		100% {
+			transform: scale(0.5);
+			transform-origin: 100% 0%;
+			opacity: 0;
+		}
+	}
+
+	@keyframes scale-up-tr {
+		0% {
+			transform: scale(0.5);
+			transform-origin: 100% 0%;
+			opacity: 0;
+		}
+		100% {
+			transform: scale(1);
+			transform-origin: 100% 0%;
+			opacity: 1;
+		}
+	}
 	header {
 		position: sticky;
 		z-index: 1;
@@ -852,52 +869,51 @@ header {
 			}
 		}
 	}
-}
-
-//------------------FOOTER------------------//
-
-.checkout-modal {
-	position: fixed;
-	top: 200px;
-	left: 0;
-	right: 0;
-	margin: 0 auto;
-	width: 600px;
-	border: 1px solid black;
-	border-radius: 15px;
-	background-color: #fff;
-	box-shadow: 0 0 7px #666;
-	.close-modal {
-		display: flex;
-		justify-content: flex-end;
-		padding: 5px 7px;
-		font-size: 25px;
-		.checkout-close {
-			cursor: pointer;
-		}
-	}
-	.modal-text {
-		display: flex;
-		align-items: center;
-		height: 50px;
-		padding-left: 10px;
-	}
-	.modal-button {
-		.checkout {
+	.checkout-modal {
+		position: fixed;
+		top: 200px;
+		left: 0;
+		right: 0;
+		margin: 0 auto;
+		width: 600px;
+		border: 1px solid black;
+		border-radius: 15px;
+		background-color: #fff;
+		box-shadow: 0 0 7px #666;
+		.close-modal {
 			display: flex;
 			justify-content: flex-end;
-			padding: 10px;
-			.check {
-				transition: 0.4s;
-				border: none;
-				border-radius: 15px;
-				font-size: 20px;
-				height: 50px;
-				width: 100px;
-				padding: 5px 10px;
-				background-color: var(--main-color);
-				color: var(--font-color-white);
+			padding: 5px 7px;
+			font-size: 25px;
+			.checkout-close {
+				cursor: pointer;
+			}
+		}
+		.modal-text {
+			display: flex;
+			align-items: center;
+			height: 50px;
+			padding-left: 10px;
+		}
+		.modal-button {
+			.checkout {
+				display: flex;
+				justify-content: flex-end;
+				padding: 10px;
+				.check {
+					transition: 0.4s;
+					border: none;
+					border-radius: 15px;
+					font-size: 20px;
+					height: 50px;
+					width: 100px;
+					padding: 5px 10px;
+					background-color: var(--main-color);
+					color: var(--font-color-white);
+				}
 			}
 		}
 	}
+	
 }
+
