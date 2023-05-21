@@ -459,7 +459,6 @@ header {
 			}
 		}
 	}
-	
 }
 
 //------------------FOOTER------------------//
@@ -540,8 +539,6 @@ header {
 		}
 	}
 }
-
-
 
 .blur {
 	filter: blur(2px);
@@ -625,7 +622,7 @@ header {
 	pointer-events: none;
 }
 
-@media screen and (min-width: 400px) {
+@media screen and (min-width: 800px) {
 	.basket-animation-in {
 		animation: scale-up-tr 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 	}
@@ -718,7 +715,7 @@ header {
 				position: absolute;
 				top: 50px;
 				left: 3px;
-				.basket-quit{
+				.basket-quit {
 					display: none;
 				}
 				.basket-container {
@@ -771,6 +768,4 @@ header {
 		margin: 0 auto;
 		width: 600px;
 	}
-	
 }
-

@@ -607,7 +607,7 @@ header .user-interactions .products-list-basket .basket-container .checkout .che
   pointer-events: none;
 }
 
-@media screen and (min-width: 400px) {
+@media screen and (min-width: 800px) {
   .basket-animation-in {
     -webkit-animation: scale-up-tr 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) both;
             animation: scale-up-tr 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) both;

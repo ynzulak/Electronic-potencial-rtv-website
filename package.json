@@ -4,7 +4,7 @@
     "parcel": "^2.8.3",
     "parcel-plugin-static-files-copy": "^1.2.4"
   },
-  "name": "media-market",
+  "name": "electronics",
   "version": "1.0.0",
   "description": "Potential website of a supermarket with electronic equipment",
   "dependencies": {

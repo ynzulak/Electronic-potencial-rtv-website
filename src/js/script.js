@@ -296,22 +296,21 @@ function mobileEvents() {
 	}
 
 	const mobileBasket = function () {
-			shoppingCart.addEventListener('click', e => {
-				basketList.classList.remove('hidden')
-				basketList.classList.remove('burger-x-slide-right')
-				basketList.classList.add('burger-slide-left')
-			})
+		shoppingCart.addEventListener('click', e => {
+			basketList.classList.remove('hidden')
+			basketList.classList.remove('burger-x-slide-right')
+			basketList.classList.add('burger-slide-left')
+		})
 
-			basketQuit.addEventListener('click', e => {
-				basketList.classList.remove('burger-slide-left')
-				basketList.classList.add('burger-x-slide-right')
-				setTimeout(() => {
-					basketList.classList.add('hidden')
-				}, 300)
-			})	
-			
+		basketQuit.addEventListener('click', e => {
+			basketList.classList.remove('burger-slide-left')
+			basketList.classList.add('burger-x-slide-right')
+			setTimeout(() => {
+				basketList.classList.add('hidden')
+			}, 300)
+		})
 	}
-	if (windowWidth < 400) {
+	if (windowWidth < 800) {
 		searchBarHide()
 		mobileBasket()
 	}
