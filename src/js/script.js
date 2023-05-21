@@ -7,21 +7,17 @@ let basketPrice = []
 
 const container = document.querySelector('.container')
 const headerDiv = document.querySelector('.header-sticky')
-const categoriesDiv = document.querySelector('.categories')
+const categoriesDiv = document.querySelector('.categories-div')
 const contentDiv = document.querySelector('.content')
 const productsDiv = document.querySelector('.products')
 const footerDiv = document.querySelector('.footer')
 const productsSection = document.querySelector('.products-list')
 const searchBar = document.querySelector('.search-bar')
-const categoryBtn = document.querySelectorAll('.btn')
 const categoryItem = document.querySelectorAll('.cat-item')
-const modelItem = document.querySelectorAll('.model-item')
-const categoriesItems = document.querySelector('.categories-container')
 const burgerModelsList = document.querySelector('.burger-list')
 const modelsList = document.querySelector('.list')
 const recomendedBtn = document.querySelector('.recomended-btn')
 const searchBarInput = document.querySelector('.input-inner')
-const searchBtn = document.querySelector('.search-btn')
 const emptyState = document.querySelector('.empty-state')
 const shoppingCart = document.querySelector('.shopping-cart')
 const basketList = document.querySelector('.products-list-basket')
@@ -36,6 +32,7 @@ const burgerMenu = document.querySelector('.burger-menu-categories')
 const burgerMenuX = document.querySelector('.burger-close')
 const btnBurgerCategory = document.querySelectorAll('.btn-burger')
 const burgerModelsMenu = document.querySelectorAll('.models-menu')
+const userResposiveDiv = document.querySelector('.user-interactions')
 
 // Rendering products
 const renderProducts = function (products) {
@@ -92,7 +89,6 @@ const addToBasket = e => {
 	const basketProduct = `
 	<div class="basket-product">
 	<div class="product-img">
-	
 	<img class="product-pic" src="${products.at(key).image}" alt="">
 	</div>
 	<div class="product-name">
@@ -127,11 +123,10 @@ const addToBasket = e => {
 					return (sum += product)
 				}, 0)
 				totalBasketAmount.innerHTML = totalBasketPrice + '.00 zł'
-				itemAmountNumber -= 1
+				itemAmountNumber = basketPrice.length
 				itemAmount.innerHTML = itemAmountNumber
 				const basketProductDiv = xMark.closest('.basket-product')
 				basketProductDiv.remove()
-				console.log(basketPrice)
 				if (totalBasketPrice === 0) {
 					totalBasketAmount.innerHTML = ``
 					basketList.classList.add('basket-animation-out')
@@ -154,7 +149,7 @@ const renderModels = function (products) {
 	modelsList.innerHTML = ''
 	uniqueModels.forEach(models => {
 		const newModelBurger = document.createElement('div')
-		newModelBurger.className = `item model-item`
+		newModelBurger.className = `item model-item burger-model`
 		newModelBurger.innerHTML = `
 		<button class="btn" data-category="${models}"><span style="pointer-events:none">${models}</span><i class="fa-solid fa-chevron-right"></i></button>
 		`
@@ -168,8 +163,8 @@ const renderModels = function (products) {
 		`
 		modelsList.appendChild(newModel)
 	})
-	const modelItem = document.querySelectorAll('.model-item')
-	modelItem.forEach(btn => {
+	const burgerModelItem = document.querySelectorAll('.burger-model')
+	burgerModelItem.forEach(btn => {
 		btn.addEventListener('click', e => {
 			burgerMenu.classList.add('hidden')
 			burgerModelsMenu.forEach(btn => {
@@ -184,6 +179,7 @@ const renderModels = function (products) {
 			})
 		})
 	})
+	const modelItem = document.querySelectorAll('.model-item')
 	modelItem.forEach((btn, index) => {
 		if (index == 0) {
 			btn.classList.add('active')
@@ -256,6 +252,7 @@ searchBarInput.addEventListener('input', e => {
 		recomendedBtn.classList.add('active')
 	}
 })
+
 const basketHover = function () {
 	shoppingCart.addEventListener('mouseenter', e => {
 		if (addToBasketEvent) {
@@ -280,26 +277,7 @@ const basketHover = function () {
 	})
 }
 
-const basketCheckout = function () {
-	checkout.addEventListener('click', e => {
-		checkoutModal.classList.remove('hidden')
-		headerDiv.classList.add('blur', 'no-hover')
-		categoriesDiv.classList.add('blur', 'no-hover')
-		contentDiv.classList.add('blur', 'no-hover')
-		productsDiv.classList.add('blur', 'no-hover')
-		footerDiv.classList.add('blur', 'no-hover')
-	})
-
-	check.addEventListener('click', e => {
-		location.reload()
-	})
-
-	checkoutClose.addEventListener('click', e => {
-		location.reload()
-	})
-}
-
-function mobileSearchBarHide() {
+function mobileEvents() {
 	const windowWidth = window.innerWidth || document.documentElement.clientWidth
 	const searchBarHide = function () {
 		window.addEventListener('scroll', function () {
@@ -315,11 +293,27 @@ function mobileSearchBarHide() {
 			}
 		})
 	}
+
+	const mobileBasket = function () {
+		shoppingCart.addEventListener('click', e => {
+			basketContainer.classList.toggle('hidden')
+			if (basketContainer.classList.contains('hidden')) {
+				// basketContainer.classList.remove('burger-x-slide-right')
+				basketContainer.classList.add('burger-slide-left')
+			} else {
+				setTimeout(() => {
+					basketContainer.classList.remove('burger-slide-left')
+				}, 300)
+				// basketContainer.classList.add('burger-x-slide-right')
+			}
+		})
+	}
 	if (windowWidth < 400) {
 		searchBarHide()
+		mobileBasket()
 	}
 }
-window.addEventListener('resize', mobileSearchBarHide)
+window.addEventListener('resize', mobileEvents)
 const burgerMenuRender = function () {
 	burgerMenuBars.addEventListener('click', e => {
 		burgerMenu.classList.remove('hidden')
@@ -348,13 +342,32 @@ const burgerMenuRender = function () {
 	})
 }
 
+const basketCheckout = function () {
+	checkout.addEventListener('click', e => {
+		checkoutModal.classList.remove('hidden')
+		headerDiv.classList.add('blur', 'no-hover')
+		categoriesDiv.classList.add('blur', 'no-hover')
+		contentDiv.classList.add('blur', 'no-hover')
+		productsDiv.classList.add('blur', 'no-hover')
+		footerDiv.classList.add('blur', 'no-hover')
+	})
+
+	check.addEventListener('click', e => {
+		location.reload()
+	})
+
+	checkoutClose.addEventListener('click', e => {
+		location.reload()
+	})
+}
+
 logo.addEventListener('click', () => {
 	location.reload()
 })
 
 basketHover()
 basketCheckout()
-mobileSearchBarHide()
 burgerMenuRender()
+mobileEvents()
 document.onload = renderProducts(recomendedProducts)
 document.onload = renderModels(recomendedProducts)
