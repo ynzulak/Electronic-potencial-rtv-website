@@ -1,9 +1,8 @@
 'use strict'
-import { products } from './products.js'
-
 let addToBasketEvent = false
 let basket = []
 let basketPrice = []
+let products = [];
 
 const container = document.querySelector('.container')
 const headerDiv = document.querySelector('.header-sticky')
@@ -39,18 +38,17 @@ const API_BASE_URL = 'http://localhost:3000/api/products';
 const fetchProducts = async () => {
     try {
         const response = await fetch(API_BASE_URL);
-        const products = await response.json();
+        products = await response.json();
         return products;
     } catch (error) {
         console.error('Error fetching products:', error);
         return [];
     }
 };
+await fetchProducts()
 
 // Rendering products
-const renderProducts = async () => {
-	const products = await fetchProducts();
-
+const renderProducts = async (products) => {
 	productsSection.innerHTML = ''
 	products.forEach(products => {
 		const newProduct = document.createElement('div')
@@ -388,3 +386,4 @@ burgerMenuRender()
 mobileEvents()
 document.onload = renderProducts(recomendedProducts)
 document.onload = renderModels(recomendedProducts)
+
