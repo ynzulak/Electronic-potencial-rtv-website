@@ -9,7 +9,7 @@ const products = [
 		model: 'iPhone',
 		price: 3999,
 		cents: '00',
-		image: 'https://acom.pl/media/webp_image/catalog/product/cache/0f7431f5367b37c067ffd8dcd36cc722/a/p/apple-iphone-12-64gb-fioletowy-purple_1.webp',
+		image: '/api/images/iphone13.jpg',
 		sale: true,
 		saleAmount: 500,
 		installment: 224.92,

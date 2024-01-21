@@ -8,8 +8,9 @@ app.use(cors())
 
 app.use('/api/images', express.static(path.join(__dirname, 'images')))
 
+const products = require('./data/products')
+
 app.get('/api/products', (req, res) => {
-	const products = require('./data/products')
 	res.json(products)
 })
 
