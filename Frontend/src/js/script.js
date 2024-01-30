@@ -55,6 +55,7 @@ const renderProducts = async (products) => {
 		newProduct.className = `product ${products.sale ? '' : 'not-on-sale'}  ${
 			products.installment ? '' : 'no-installment'
 		}`
+		console.log(products.image)
 		newProduct.innerHTML = `
         <div class="product-header">
 		<h2>${products.name}</h2>

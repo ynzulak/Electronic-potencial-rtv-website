@@ -1,19 +1,21 @@
-const express = require('express')
-const cors = require('cors')
-const path = require('path')
-const app = express()
-const port = 3000
+const express = require('express');
+const cors = require('cors');
+const path = require('path');
+const app = express();
+const PORT = 3000;
 
-app.use(cors())
+app.use(cors());
 
-app.use('/api/images', express.static(path.join(__dirname, 'images')))
+app.use(express.static('public'));
+app.use('/api/images', express.static(('images')));
 
-const products = require('./data/products')
+
+const products = require('./data/products');
 
 app.get('/api/products', (req, res) => {
-	res.json(products)
-})
+  res.json(products);
+});
 
-app.listen(port, () => {
-	console.log(`Serwer backendowy działa na http://localhost:${port}`)
-})
+app.listen(PORT, () => {
+  console.log(`Serwer backendowy działa na http://localhost:${PORT}`);
+});
